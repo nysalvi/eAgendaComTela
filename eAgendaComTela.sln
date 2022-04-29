@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgendaComTela.ConsoleApp", "eAgendaComTela\eAgendaComTela.ConsoleApp.csproj", "{D095A4DF-B41B-4890-87B1-F55D693B90AF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{01F43939-EE6A-4869-86CC-9512E05CDDE5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apresentacao", "Apresentacao\Apresentacao.csproj", "{8ED90314-64F0-487D-A9B0-F5525EC85FA8}"
@@ -17,16 +15,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Dominio", "2 - Dominio"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infra", "3 - Infra", "{86CB4C73-25F8-4714-A4DA-7EE628B8D95F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgendaComTela.WinApp", "eAgendaComTela.WinForms\eAgendaComTela.WinApp.csproj", "{8846195D-5F26-4CFE-A021-4FA31E78CC41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D095A4DF-B41B-4890-87B1-F55D693B90AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D095A4DF-B41B-4890-87B1-F55D693B90AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D095A4DF-B41B-4890-87B1-F55D693B90AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D095A4DF-B41B-4890-87B1-F55D693B90AF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{01F43939-EE6A-4869-86CC-9512E05CDDE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{01F43939-EE6A-4869-86CC-9512E05CDDE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01F43939-EE6A-4869-86CC-9512E05CDDE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,15 +35,19 @@ Global
 		{29BADD93-F211-4051-85F1-19B822FE7E98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29BADD93-F211-4051-85F1-19B822FE7E98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29BADD93-F211-4051-85F1-19B822FE7E98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8846195D-5F26-4CFE-A021-4FA31E78CC41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8846195D-5F26-4CFE-A021-4FA31E78CC41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8846195D-5F26-4CFE-A021-4FA31E78CC41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8846195D-5F26-4CFE-A021-4FA31E78CC41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{D095A4DF-B41B-4890-87B1-F55D693B90AF} = {66F281AA-6A60-4A28-9BC1-7515E49703DE}
 		{01F43939-EE6A-4869-86CC-9512E05CDDE5} = {86CB4C73-25F8-4714-A4DA-7EE628B8D95F}
 		{8ED90314-64F0-487D-A9B0-F5525EC85FA8} = {66F281AA-6A60-4A28-9BC1-7515E49703DE}
 		{29BADD93-F211-4051-85F1-19B822FE7E98} = {CD2394B5-5CF1-4CD1-977F-D5AF91C78844}
+		{8846195D-5F26-4CFE-A021-4FA31E78CC41} = {66F281AA-6A60-4A28-9BC1-7515E49703DE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7CA571AA-179F-4BBA-80F8-202E2823F4CA}
