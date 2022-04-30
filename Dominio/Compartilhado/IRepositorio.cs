@@ -9,9 +9,10 @@ namespace Dominio.Compartilhado
     public interface IRepositorio<T> where T : Entidade 
     {
         void Inserir(T entidade);
-        void Editar(T entidade);
-        void Excluir(T pred);
-        List<T> Visualizar(Predicate<T> pred);
+        void Editar(T entidade, int posicao);
+        void Excluir(T entidade);
+        List<T> Filtrar(Predicate<T> pred);
+        //List<T> Visualizar();
 
     }
 }

@@ -6,30 +6,32 @@ using System.Threading.Tasks;
 
 namespace Dominio.Compartilhado
 {
-    internal class Repositorio : IRepositorio<Entidade>
+    public class Repositorio<T> : IRepositorio<T> where T : Entidade
     {        
-        private List<Entidade> entidadeList;
+        private List<T> entidadeList;
 
         public Repositorio()
         {
-            entidadeList = new List<Entidade>();
+            entidadeList = new List<T>();
         }
-        public void Inserir(Entidade entidade)
+        public void Inserir(T entidade)
         {
-            throw new NotImplementedException();
-        }
-        public void Editar(Entidade entidade)
-        {
-            throw new NotImplementedException();
+            entidadeList.Add(entidade);
         }
 
-        public void Excluir(Entidade entidade)
-        {
-            throw new NotImplementedException();
+        public void Editar(T entidade, int posicao)
+        {            
+            entidadeList[posicao] = entidade;
         }
-        public List<Entidade> Visualizar(Predicate<Entidade> pred)
+
+        public void Excluir(T entidade)
         {
-            return pred == null ? entidadeList: entidadeList.FindAll(pred);
+            entidadeList.Remove(entidade);
+        }
+
+        public List<T> Filtrar(Predicate<T> pred)
+        {
+            return entidadeList.FindAll(pred);
         }
     }
 }

@@ -6,6 +6,7 @@ namespace Dominio
 {
     public class Contato : Entidade
     {
+        public int Contador;
         public Contato()
         {
 
@@ -36,7 +37,7 @@ namespace Dominio
                 return "";
             return "sucesso";
         }
-        public bool ValidarTelefone()
+        private bool ValidarTelefone()
         {
             string pais = @" *(\+ *[0-9] *[0-9] *)? *";
             string ddd = @"(([0-9] *[0-9] *)|(\( *[0-9] *[0-9] *\) *))?";
@@ -45,7 +46,7 @@ namespace Dominio
             Regex regex = new Regex("^" + pais + ddd + numero + "$");
             return regex.IsMatch(Telefone);
         }
-        public bool ValidarEmail()
+        private bool ValidarEmail()
         {
             EmailAddressAttribute e = new EmailAddressAttribute();
             return e.IsValid(Email);

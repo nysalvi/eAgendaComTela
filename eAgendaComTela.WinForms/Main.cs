@@ -12,6 +12,7 @@ namespace eAgendaComTela.WinForms
         
         public Main()
         {
+            contatoRepositorio = new Repositorio<Contato>();
             InitializeComponent();
         }
 

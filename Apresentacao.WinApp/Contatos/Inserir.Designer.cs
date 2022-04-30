@@ -33,11 +33,11 @@
             this.labelTelefone = new System.Windows.Forms.Label();
             this.labelEmpresa = new System.Windows.Forms.Label();
             this.labelCargo = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBoxNome = new System.Windows.Forms.TextBox();
+            this.textBoxEmail = new System.Windows.Forms.TextBox();
+            this.textBoxTelefone = new System.Windows.Forms.TextBox();
+            this.textBoxEmpresa = new System.Windows.Forms.TextBox();
+            this.textBoxCargo = new System.Windows.Forms.TextBox();
             this.buttonCriar = new System.Windows.Forms.Button();
             this.buttonVoltar = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -87,42 +87,42 @@
             this.labelCargo.TabIndex = 4;
             this.labelCargo.Text = "Cargo: ";
             // 
-            // textBox1
+            // textBoxNome
             // 
-            this.textBox1.Location = new System.Drawing.Point(125, 45);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(244, 23);
-            this.textBox1.TabIndex = 5;
+            this.textBoxNome.Location = new System.Drawing.Point(125, 45);
+            this.textBoxNome.Name = "textBoxNome";
+            this.textBoxNome.Size = new System.Drawing.Size(244, 23);
+            this.textBoxNome.TabIndex = 5;
             // 
-            // textBox2
+            // textBoxEmail
             // 
-            this.textBox2.Location = new System.Drawing.Point(125, 96);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(244, 23);
-            this.textBox2.TabIndex = 6;
+            this.textBoxEmail.Location = new System.Drawing.Point(125, 96);
+            this.textBoxEmail.Name = "textBoxEmail";
+            this.textBoxEmail.Size = new System.Drawing.Size(244, 23);
+            this.textBoxEmail.TabIndex = 6;
             // 
-            // textBox3
+            // textBoxTelefone
             // 
-            this.textBox3.Location = new System.Drawing.Point(125, 155);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(244, 23);
-            this.textBox3.TabIndex = 7;
+            this.textBoxTelefone.Location = new System.Drawing.Point(125, 155);
+            this.textBoxTelefone.Name = "textBoxTelefone";
+            this.textBoxTelefone.Size = new System.Drawing.Size(244, 23);
+            this.textBoxTelefone.TabIndex = 7;
             // 
-            // textBox4
+            // textBoxEmpresa
             // 
-            this.textBox4.Location = new System.Drawing.Point(125, 213);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.PlaceholderText = "(opcional)...";
-            this.textBox4.Size = new System.Drawing.Size(244, 23);
-            this.textBox4.TabIndex = 8;
+            this.textBoxEmpresa.Location = new System.Drawing.Point(125, 213);
+            this.textBoxEmpresa.Name = "textBoxEmpresa";
+            this.textBoxEmpresa.PlaceholderText = "(opcional)...";
+            this.textBoxEmpresa.Size = new System.Drawing.Size(244, 23);
+            this.textBoxEmpresa.TabIndex = 8;
             // 
-            // textBox5
+            // textBoxCargo
             // 
-            this.textBox5.Location = new System.Drawing.Point(125, 264);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.PlaceholderText = "(opcional)...";
-            this.textBox5.Size = new System.Drawing.Size(244, 23);
-            this.textBox5.TabIndex = 9;
+            this.textBoxCargo.Location = new System.Drawing.Point(125, 264);
+            this.textBoxCargo.Name = "textBoxCargo";
+            this.textBoxCargo.PlaceholderText = "(opcional)...";
+            this.textBoxCargo.Size = new System.Drawing.Size(244, 23);
+            this.textBoxCargo.TabIndex = 9;
             // 
             // buttonCriar
             // 
@@ -132,6 +132,7 @@
             this.buttonCriar.TabIndex = 10;
             this.buttonCriar.Text = "Criar";
             this.buttonCriar.UseVisualStyleBackColor = true;
+            this.buttonCriar.Click += new System.EventHandler(this.buttonCriar_Click);
             // 
             // buttonVoltar
             // 
@@ -150,11 +151,11 @@
             this.ClientSize = new System.Drawing.Size(562, 371);
             this.Controls.Add(this.buttonVoltar);
             this.Controls.Add(this.buttonCriar);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxCargo);
+            this.Controls.Add(this.textBoxEmpresa);
+            this.Controls.Add(this.textBoxTelefone);
+            this.Controls.Add(this.textBoxEmail);
+            this.Controls.Add(this.textBoxNome);
             this.Controls.Add(this.labelCargo);
             this.Controls.Add(this.labelEmpresa);
             this.Controls.Add(this.labelTelefone);
@@ -174,11 +175,11 @@
         private System.Windows.Forms.Label labelTelefone;
         private System.Windows.Forms.Label labelEmpresa;
         private System.Windows.Forms.Label labelCargo;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox textBoxNome;
+        private System.Windows.Forms.TextBox textBoxEmail;
+        private System.Windows.Forms.TextBox textBoxTelefone;
+        private System.Windows.Forms.TextBox textBoxEmpresa;
+        private System.Windows.Forms.TextBox textBoxCargo;
         private System.Windows.Forms.Button buttonCriar;
         private System.Windows.Forms.Button buttonVoltar;
     }
