@@ -8,7 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Apresentacao.WinApp\Apresentacao.WinApp.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\Infra\Infra.csproj" />
   </ItemGroup>
