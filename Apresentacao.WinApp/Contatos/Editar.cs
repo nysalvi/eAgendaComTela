@@ -27,9 +27,15 @@ namespace Apresentacao.WinApp.Contatos
             string nome = textBoxNome.Text == "" ? contatoAntigo.Nome : textBoxNome.Text;
             string email = textBoxEmail.Text == "" ? contatoAntigo.Email : textBoxEmail.Text;
             string telefone = textBoxTelefone.Text == "" ? contatoAntigo.Telefone : textBoxTelefone.Text;
-            string empresa = textBoxEmpresa.Text;
-            string cargo = textBoxCargo.Text;
+            string empresa = textBoxEmpresa.Text == "" ? contatoAntigo.Empresa : textBoxEmpresa.Text;
+            string cargo = textBoxCargo.Text == "" ? contatoAntigo.Cargo : textBoxCargo.Text;
 
+            if (campoVazio())
+            {
+                MessageBox.Show("Pelo Menos Um Campo precisa Ser Editado!!!", "ATENÇÃO", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
             Dominio.Contato contato = new(nome, email, telefone, empresa, cargo);
             string resultado = contato.Validar();
 
@@ -45,6 +51,15 @@ namespace Apresentacao.WinApp.Contatos
                 MessageBox.Show(contato.Validar(), "ERRO", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+        }
+        private bool campoVazio()
+        {
+            if (textBoxCargo.Text == "" && textBoxEmail.Text == "")
+            {
+                if (textBoxEmpresa.Text == "" && textBoxNome.Text == "" && textBoxTelefone.Text == "")
+                    return true;
+            }
+            return false;
         }
     }
 }

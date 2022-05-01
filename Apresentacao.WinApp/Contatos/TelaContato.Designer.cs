@@ -42,6 +42,7 @@
             this.columnHeaderTelefone = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderEmpresa = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderCargo = new System.Windows.Forms.ColumnHeader();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.contatoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -73,6 +74,7 @@
             this.buttonExcluir.TabIndex = 2;
             this.buttonExcluir.Text = "Excluir";
             this.buttonExcluir.UseVisualStyleBackColor = true;
+            this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);
             // 
             // buttonCancel
             // 
@@ -141,12 +143,24 @@
             this.columnHeaderCargo.Text = "Cargo";
             this.columnHeaderCargo.Width = 100;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Sem Filtros",
+            "Por Cargo"});
+            this.comboBox1.Location = new System.Drawing.Point(590, 355);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 23);
+            this.comboBox1.TabIndex = 8;
+            // 
             // TelaContato
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
             this.ClientSize = new System.Drawing.Size(761, 435);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonExcluir);
@@ -173,5 +187,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderTelefone;
         private System.Windows.Forms.ColumnHeader columnHeaderEmpresa;
         private System.Windows.Forms.ColumnHeader columnHeaderCargo;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }

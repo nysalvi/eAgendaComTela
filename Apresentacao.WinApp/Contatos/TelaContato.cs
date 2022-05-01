@@ -42,11 +42,11 @@ namespace Apresentacao.WinApp.Contato
                     MessageBoxIcon.Warning);
                 return;
             }
-            
-            int posicao = Convert.ToInt32(listView1.SelectedItems[0].Text);
-            //MessageBox.Show(contato, "SUCESSO", MessageBoxButtons.OK,
-            //    MessageBoxIcon.Asterisk);
-
+            if (!int.TryParse(listView1.SelectedItems[0].Text, out int posicao))
+            {
+                MessageBox.Show("Seleção Inválida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             Hide();
             Editar editar = new(contatoRepositorio, posicao);
             if (editar.ShowDialog() == DialogResult.Cancel)
@@ -54,17 +54,38 @@ namespace Apresentacao.WinApp.Contato
                 editarLinha(posicao);
                 Show();
             }
+        }        
+        private void editarLinha(int posicao)
+        {
+            ListViewItem coluna = listView1.SelectedItems[0];
+            Dominio.Contato contato = contatoRepositorio.EntidadeList[posicao];
+            coluna.SubItems[1].Text = contato.Nome;
+            coluna.SubItems[2].Text = contato.Email;
+            coluna.SubItems[3].Text = contato.Telefone;
+            coluna.SubItems[4].Text = contato.Empresa;
+            coluna.SubItems[5].Text = contato.Cargo;
+        }
+
+        private void buttonExcluir_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Nenhum Item Selecionado", "ATENÇÃO", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
+            if (!int.TryParse(listView1.SelectedItems[0].Text, out int posicao))
+            {
+                MessageBox.Show("Seleção Inválida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            ListViewItem coluna = listView1.SelectedItems[0];
+            listView1.Items.Remove(coluna);
+
         }
         private void AdicionarLinha(bool adicionarListaCompleta)
         {
-            //cont.Numero = ++totalContatos;
-
-
-            //ListViewItem.ListViewSubItem nome = new(coluna, cont.Nome);
-            //ListViewItem.ListViewSubItem email = new(coluna, cont.Email);
-            //ListViewItem.ListViewSubItem telefone = new(coluna, cont.Telefone);
-            //ListViewItem.ListViewSubItem empresa = new(coluna, cont.Empresa);
-            //ListViewItem.ListViewSubItem cargo = new(coluna, cont.Cargo);
             int i = adicionarListaCompleta ? 0 : contatoRepositorio.EntidadeList.Count;
 
             while (i < contatoRepositorio.EntidadeList.Count)
@@ -81,16 +102,6 @@ namespace Apresentacao.WinApp.Contato
                 i++;
             }
             totalContatos = contatoRepositorio.EntidadeList.Count;
-        }
-        private void editarLinha(int posicao)
-        {
-            ListViewItem coluna = listView1.SelectedItems[0];
-            Dominio.Contato contato = contatoRepositorio.EntidadeList[posicao];
-            coluna.SubItems[1].Text = contato.Nome;
-            coluna.SubItems[2].Text = contato.Email;
-            coluna.SubItems[3].Text = contato.Telefone;
-            coluna.SubItems[4].Text = contato.Empresa;
-            coluna.SubItems[5].Text = contato.Cargo;
         }
     }
 }
