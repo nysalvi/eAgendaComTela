@@ -98,13 +98,15 @@
             this.columnHeaderTelefone,
             this.columnHeaderEmpresa,
             this.columnHeaderCargo});
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
             listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(151, 107);
+            this.listView1.Location = new System.Drawing.Point(55, 107);
             this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(441, 242);
+            this.listView1.Size = new System.Drawing.Size(656, 242);
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -112,27 +114,32 @@
             // columnHeaderID
             // 
             this.columnHeaderID.Text = "ID";
-            this.columnHeaderID.Width = 45;
+            this.columnHeaderID.Width = 30;
             // 
             // columnHeaderNome
             // 
             this.columnHeaderNome.Text = "Nome";
+            this.columnHeaderNome.Width = 130;
             // 
             // columnHeaderEmail
             // 
             this.columnHeaderEmail.Text = "Email";
+            this.columnHeaderEmail.Width = 170;
             // 
             // columnHeaderTelefone
             // 
             this.columnHeaderTelefone.Text = "Telefone";
+            this.columnHeaderTelefone.Width = 130;
             // 
             // columnHeaderEmpresa
             // 
             this.columnHeaderEmpresa.Text = "Empresa";
+            this.columnHeaderEmpresa.Width = 90;
             // 
             // columnHeaderCargo
             // 
             this.columnHeaderCargo.Text = "Cargo";
+            this.columnHeaderCargo.Width = 100;
             // 
             // TelaContato
             // 

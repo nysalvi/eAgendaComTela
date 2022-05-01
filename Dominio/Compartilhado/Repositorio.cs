@@ -15,23 +15,20 @@ namespace Dominio.Compartilhado
             entidadeList = new List<T>();
         }
         public void Inserir(T entidade)
-        {
+        {   
+            entidade.Numero = Contato.Total++;
             entidadeList.Add(entidade);
         }
 
         public void Editar(T entidade, int posicao)
-        {            
+        {
+            entidade.Numero = posicao;
             entidadeList[posicao] = entidade;
         }
 
         public void Excluir(T entidade)
         {
             entidadeList.Remove(entidade);
-        }
-
-        public List<T> Filtrar(Predicate<T> pred)
-        {
-            return entidadeList.FindAll(pred);
         }
     }
 }

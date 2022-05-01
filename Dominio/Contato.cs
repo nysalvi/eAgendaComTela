@@ -6,6 +6,7 @@ namespace Dominio
 {
     public class Contato : Entidade
     {
+        public static int Total;
         public Contato()
         {
 
@@ -32,8 +33,6 @@ namespace Dominio
                 return "O email não pode ser vazio e deve seguir um formato Válido";
             if (ValidarTelefone())
                 return "O telefone não pode ser vazio e deve seguir um formato Válido";
-            if (string.IsNullOrEmpty(Empresa))
-                return "";
             return "sucesso";
         }
         private bool ValidarTelefone()

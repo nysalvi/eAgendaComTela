@@ -11,7 +11,7 @@ namespace Dominio.Compartilhado
         void Inserir(T entidade);
         void Editar(T entidade, int posicao);
         void Excluir(T entidade);
-        List<T> Filtrar(Predicate<T> pred);
+        //List<T> Filtrar(Predicate<T> pred);
         //List<T> Visualizar();
 
     }

@@ -7,9 +7,11 @@ namespace Apresentacao.WinApp.Contatos
     public partial class Editar : Form
     {
         Repositorio<Dominio.Contato> contatoRepositorio;
-        public Editar(Repositorio<Dominio.Contato> contatoRepositorio)
+        int posicaoContato;
+        public Editar(Repositorio<Dominio.Contato> contatoRepositorio, int posicaoContato)
         {
             InitializeComponent();
+            this.posicaoContato = posicaoContato;
             this.contatoRepositorio = contatoRepositorio;
         }
 
@@ -20,9 +22,11 @@ namespace Apresentacao.WinApp.Contatos
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            string nome = textBoxNome.Text;
-            string email = textBoxEmail.Text;
-            string telefone = textBoxTelefone.Text;
+            Dominio.Contato contatoAntigo = contatoRepositorio.EntidadeList[posicaoContato];
+
+            string nome = textBoxNome.Text == "" ? contatoAntigo.Nome : textBoxNome.Text;
+            string email = textBoxEmail.Text == "" ? contatoAntigo.Email : textBoxEmail.Text;
+            string telefone = textBoxTelefone.Text == "" ? contatoAntigo.Telefone : textBoxTelefone.Text;
             string empresa = textBoxEmpresa.Text;
             string cargo = textBoxCargo.Text;
 
@@ -31,15 +35,10 @@ namespace Apresentacao.WinApp.Contatos
 
             if (resultado == "sucesso")
             {
-                MessageBox.Show("Cliente Adicionado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK,
+                contatoRepositorio.Editar(contato, posicaoContato);
+                MessageBox.Show("Cliente Editado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
-
-                contatoRepositorio.Inserir(contato);
-                textBoxNome.Clear();
-                textBoxEmail.Clear();
-                textBoxTelefone.Clear();
-                textBoxEmpresa.Clear();
-                textBoxCargo.Clear();
+                Close();
             }
             else
             {

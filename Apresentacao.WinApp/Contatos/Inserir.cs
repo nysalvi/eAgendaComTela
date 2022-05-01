@@ -7,11 +7,9 @@ namespace Apresentacao.WinApp.Contato
     public partial class Inserir : Form
     {
         Repositorio<Dominio.Contato> contatoRepositorio;
-        int TotalContatos { get; set; }
-        public Inserir(Repositorio<Dominio.Contato> contatoRepositorio,int totalContatos)
+        public Inserir(Repositorio<Dominio.Contato> contatoRepositorio)
         {
             InitializeComponent();      
-            TotalContatos = totalContatos;
             this.contatoRepositorio = contatoRepositorio;
         }
         private void buttonCriar_Click(object sender, EventArgs e)
@@ -30,7 +28,6 @@ namespace Apresentacao.WinApp.Contato
                 MessageBox.Show("Cliente Adicionado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK, 
                     MessageBoxIcon.Asterisk);
 
-                contato.Numero = TotalContatos++;
                 contatoRepositorio.Inserir(contato);
                 textBoxNome.Clear();
                 textBoxEmail.Clear();
