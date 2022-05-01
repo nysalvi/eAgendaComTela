@@ -6,7 +6,6 @@ namespace Dominio
 {
     public class Contato : Entidade
     {
-        public int Contador;
         public Contato()
         {
 

@@ -1,20 +1,24 @@
 ﻿using System;
-using System.Windows.Forms;
 using Dominio.Compartilhado;
+using System.Windows.Forms;
 
-namespace Apresentacao.WinApp.Contato    
+namespace Apresentacao.WinApp.Contatos
 {
-    public partial class Inserir : Form
+    public partial class Editar : Form
     {
         Repositorio<Dominio.Contato> contatoRepositorio;
-        int TotalContatos { get; set; }
-        public Inserir(Repositorio<Dominio.Contato> contatoRepositorio,int totalContatos)
+        public Editar(Repositorio<Dominio.Contato> contatoRepositorio)
         {
-            InitializeComponent();      
-            TotalContatos = totalContatos;
+            InitializeComponent();
             this.contatoRepositorio = contatoRepositorio;
         }
-        private void buttonCriar_Click(object sender, EventArgs e)
+
+        private void buttonVoltar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
         {
             string nome = textBoxNome.Text;
             string email = textBoxEmail.Text;
@@ -27,10 +31,9 @@ namespace Apresentacao.WinApp.Contato
 
             if (resultado == "sucesso")
             {
-                MessageBox.Show("Cliente Adicionado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK, 
+                MessageBox.Show("Cliente Adicionado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
 
-                contato.Numero = TotalContatos++;
                 contatoRepositorio.Inserir(contato);
                 textBoxNome.Clear();
                 textBoxEmail.Clear();
@@ -43,10 +46,6 @@ namespace Apresentacao.WinApp.Contato
                 MessageBox.Show(contato.Validar(), "ERRO", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
-        }
-        private void buttonVoltar_Click(object sender, EventArgs e)
-        {
-            Close();
         }
     }
 }

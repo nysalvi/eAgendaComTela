@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace Dominio.Compartilhado
 {
     public class Repositorio<T> : IRepositorio<T> where T : Entidade
-    {        
+    {
         private List<T> entidadeList;
-
+        public List<T> EntidadeList => entidadeList;
         public Repositorio()
         {
             entidadeList = new List<T>();

@@ -8,7 +8,7 @@ namespace eAgendaComTela.WinForms
 {
     public partial class Main : Form
     {
-        IRepositorio<Contato> contatoRepositorio;
+        Repositorio<Contato> contatoRepositorio;
         
         public Main()
         {
