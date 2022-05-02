@@ -6,7 +6,8 @@ namespace Dominio
 {
     public class Contato : Entidade
     {
-        public static int Total;
+        public static int total;
+        public override int Total { get { return total; } set { total = value; } }
         public Contato()
         {
 
@@ -23,7 +24,7 @@ namespace Dominio
             Email = email;
             Telefone = telefone;
             Empresa = empresa;
-            Cargo = cargo;
+            Cargo = cargo;            
         }
         public override string Validar()
         {

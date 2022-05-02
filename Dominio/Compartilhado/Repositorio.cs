@@ -15,9 +15,9 @@ namespace Dominio.Compartilhado
             entidadeList = new List<T>();
         }
         public void Inserir(T entidade)
-        {   
-            entidade.Numero = Contato.Total++;
-            entidadeList.Add(entidade);
+        {
+            entidade.Numero = entidade.Total++;
+            entidadeList.Add(entidade);              
         }
 
         public void Editar(T entidade, int posicao)

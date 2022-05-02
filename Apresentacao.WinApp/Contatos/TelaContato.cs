@@ -1,11 +1,10 @@
 ﻿using System.Windows.Forms;
-using Dominio.Compartilhado;
 using Dominio;
-using System.ComponentModel;
+using Dominio.Compartilhado;
 using System.Collections.Generic;
 using System;
 using Apresentacao.WinApp.Contatos;
-
+using System.Linq;
 namespace Apresentacao.WinApp.Contato
 {
     public partial class TelaContato : Form
@@ -30,10 +29,6 @@ namespace Apresentacao.WinApp.Contato
                 AdicionarLinha(false);                
             }
         }
-        private void buttonCancel_Click(object sender, System.EventArgs e)
-        {
-            Close();
-        }
         private void buttonEditar_Click(object sender, System.EventArgs e)
         {
             if (listView1.SelectedItems.Count == 0)
@@ -54,18 +49,7 @@ namespace Apresentacao.WinApp.Contato
                 editarLinha(posicao);
                 Show();
             }
-        }        
-        private void editarLinha(int posicao)
-        {
-            ListViewItem coluna = listView1.SelectedItems[0];
-            Dominio.Contato contato = contatoRepositorio.EntidadeList[posicao];
-            coluna.SubItems[1].Text = contato.Nome;
-            coluna.SubItems[2].Text = contato.Email;
-            coluna.SubItems[3].Text = contato.Telefone;
-            coluna.SubItems[4].Text = contato.Empresa;
-            coluna.SubItems[5].Text = contato.Cargo;
         }
-
         private void buttonExcluir_Click(object sender, EventArgs e)
         {
             if (listView1.SelectedItems.Count == 0)
@@ -83,6 +67,20 @@ namespace Apresentacao.WinApp.Contato
             ListViewItem coluna = listView1.SelectedItems[0];
             listView1.Items.Remove(coluna);
 
+        }
+        private void buttonCancel_Click(object sender, System.EventArgs e)
+        {
+            Close();
+        }
+        private void editarLinha(int posicao)
+        {
+            ListViewItem coluna = listView1.SelectedItems[0];
+            Dominio.Contato contato = contatoRepositorio.EntidadeList[posicao];
+            coluna.SubItems[1].Text = contato.Nome;
+            coluna.SubItems[2].Text = contato.Email;
+            coluna.SubItems[3].Text = contato.Telefone;
+            coluna.SubItems[4].Text = contato.Empresa;
+            coluna.SubItems[5].Text = contato.Cargo;
         }
         private void AdicionarLinha(bool adicionarListaCompleta)
         {
@@ -102,6 +100,54 @@ namespace Apresentacao.WinApp.Contato
                 i++;
             }
             totalContatos = contatoRepositorio.EntidadeList.Count;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (comboBox1.SelectedIndex == 0)
+            {
+                if (contatoRepositorio.EntidadeList.ToString() == listView1.Items.ToString())
+                    return;
+                listView1.Items.Clear();
+
+                foreach (Dominio.Contato c in contatoRepositorio.EntidadeList)
+                {
+                    ListViewItem coluna = new("" + c.Numero);
+
+                    coluna.SubItems.Add(c.Nome);
+                    coluna.SubItems.Add(c.Email);
+                    coluna.SubItems.Add(c.Telefone);
+                    coluna.SubItems.Add(c.Empresa);
+                    coluna.SubItems.Add(c.Cargo);
+
+                    listView1.Items.Add(coluna);
+
+                }
+                return;
+            }
+            AgruparCargo();
+        }
+
+        private  void AgruparCargo()
+        {
+            listView1.Items.Clear();
+
+            IEnumerable<IGrouping<string, Dominio.Contato>> contatos = contatoRepositorio.EntidadeList.GroupBy(x => x.Cargo);
+            
+            foreach(Dominio.Contato c in contatos)
+            {
+                ListViewItem coluna = new("" + c.Numero);
+
+                coluna.SubItems.Add(c.Nome);
+                coluna.SubItems.Add(c.Email);
+                coluna.SubItems.Add(c.Telefone);
+                coluna.SubItems.Add(c.Empresa);
+                coluna.SubItems.Add(c.Cargo);
+
+                listView1.Items.Add(coluna);
+
+            }
         }
     }
 }
