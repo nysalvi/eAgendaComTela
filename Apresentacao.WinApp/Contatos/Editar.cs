@@ -1,5 +1,6 @@
 ﻿using System;
 using Dominio.Compartilhado;
+using Dominio;
 using System.Windows.Forms;
 
 namespace Apresentacao.WinApp.Contatos

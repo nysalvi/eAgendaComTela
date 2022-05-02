@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using Dominio.Compartilhado;
 
-namespace Apresentacao.WinApp.Contato    
+namespace Apresentacao.WinApp.Contatos 
 {
     public partial class Inserir : Form
     {
@@ -25,7 +25,14 @@ namespace Apresentacao.WinApp.Contato
 
             if (resultado == "sucesso")
             {
-                MessageBox.Show("Cliente Adicionado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK, 
+                if (contatoRepositorio.EntidadeList.Find(x => x.Nome == contato.Nome || x.Email == contato.Email
+                    || x.Telefone == contato.Telefone) != null)
+                {
+                    MessageBox.Show("Nome/Telefone/Email já inserido!!!", "ERRO", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
+                }
+                MessageBox.Show("Contato Adicionado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK, 
                     MessageBoxIcon.Asterisk);
 
                 contatoRepositorio.Inserir(contato);
@@ -35,11 +42,8 @@ namespace Apresentacao.WinApp.Contato
                 textBoxEmpresa.Clear();
                 textBoxCargo.Clear();
             }
-            else
-            {
-                MessageBox.Show(contato.Validar(), "ERRO", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
+            MessageBox.Show(resultado, "ERRO", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
         private void buttonVoltar_Click(object sender, EventArgs e)
         {

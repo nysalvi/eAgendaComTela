@@ -14,12 +14,12 @@ namespace Dominio
         public string Assunto { get; set; }
         public string Local { get; set; }
         public DateTime Data { set; get; }
-        public TimeSpan HoraInicio { get; set; }
-        public TimeSpan HoraTermino { get; set; }
+        public TimeSpan? HoraInicio { get; set; }
+        public TimeSpan? HoraTermino { get; set; }
         public Contato Contato { get; set; }
 
-        public Compromisso(string assunto, string local, DateTime data, TimeSpan horaInicio,
-            TimeSpan horaTermino, Contato contato)
+        public Compromisso(string assunto, string local, DateTime data, TimeSpan? horaInicio,
+            TimeSpan? horaTermino, Contato contato)
         {
             Assunto = assunto;
             Local = local;

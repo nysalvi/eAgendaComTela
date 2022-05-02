@@ -1,20 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dominio;
+using Dominio.Compartilhado;
 using System.Windows.Forms;
 
 namespace Apresentacao.WinApp.Compromissos
 {
     public partial class Editar : Form
     {
-        public Editar()
+        Repositorio<Compromisso> compromissoRepositorio;
+        Repositorio<Dominio.Contato> contatoRepositorio;
+        int posicaoCompromisso;
+        public Editar(Repositorio<Compromisso> compromissoRepositorio, int posicaoCompromisso,
+            Repositorio<Dominio.Contato> contatoRepositorio)
         {
             InitializeComponent();
+            this.compromissoRepositorio = compromissoRepositorio;
+            this.contatoRepositorio = contatoRepositorio;
+            this.posicaoCompromisso = posicaoCompromisso;
         }
     }
 }

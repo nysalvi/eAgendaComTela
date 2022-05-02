@@ -1,4 +1,4 @@
-﻿namespace Apresentacao.WinApp.Contato
+﻿namespace Apresentacao.WinApp.Contatos
 {
     partial class Inserir
     {

@@ -1,4 +1,4 @@
-﻿namespace eAgendaComTela.WinForms
+﻿namespace eAgendaComTela.WinApp
 {
     partial class Main
     {

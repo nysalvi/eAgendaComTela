@@ -3,9 +3,8 @@ using Dominio;
 using Dominio.Compartilhado;
 using System.Collections.Generic;
 using System;
-using Apresentacao.WinApp.Contatos;
 using System.Linq;
-namespace Apresentacao.WinApp.Contato
+namespace Apresentacao.WinApp.Contatos
 {
     public partial class TelaContato : Form
     {
@@ -66,7 +65,6 @@ namespace Apresentacao.WinApp.Contato
 
             ListViewItem coluna = listView1.SelectedItems[0];
             listView1.Items.Remove(coluna);
-
         }
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
@@ -84,11 +82,14 @@ namespace Apresentacao.WinApp.Contato
         }
         private void AdicionarLinha(bool adicionarListaCompleta)
         {
-            int i = adicionarListaCompleta ? 0 : contatoRepositorio.EntidadeList.Count;
+            if (contatoRepositorio.EntidadeList.Count == 0)
+                return;
+            int i = adicionarListaCompleta ? 0 : contatoRepositorio.EntidadeList.Count - 1;
 
             while (i < contatoRepositorio.EntidadeList.Count)
             {
                 ListViewItem coluna = new("" + i);
+
 
                 coluna.SubItems.Add(contatoRepositorio.EntidadeList[i].Nome);
                 coluna.SubItems.Add(contatoRepositorio.EntidadeList[i].Email);
@@ -103,12 +104,9 @@ namespace Apresentacao.WinApp.Contato
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        {                       
             if (comboBox1.SelectedIndex == 0)
             {
-                if (contatoRepositorio.EntidadeList.ToString() == listView1.Items.ToString())
-                    return;
                 listView1.Items.Clear();
 
                 foreach (Dominio.Contato c in contatoRepositorio.EntidadeList)
@@ -132,10 +130,9 @@ namespace Apresentacao.WinApp.Contato
         private  void AgruparCargo()
         {
             listView1.Items.Clear();
+            List<Dominio.Contato> copia = new(contatoRepositorio.EntidadeList.OrderBy(x=> x.Cargo));
 
-            IEnumerable<IGrouping<string, Dominio.Contato>> contatos = contatoRepositorio.EntidadeList.GroupBy(x => x.Cargo);
-            
-            foreach(Dominio.Contato c in contatos)
+            foreach (Dominio.Contato c in copia)
             {
                 ListViewItem coluna = new("" + c.Numero);
 
@@ -145,8 +142,7 @@ namespace Apresentacao.WinApp.Contato
                 coluna.SubItems.Add(c.Empresa);
                 coluna.SubItems.Add(c.Cargo);
 
-                listView1.Items.Add(coluna);
-
+                listView1.Items.Add(coluna);                
             }
         }
     }

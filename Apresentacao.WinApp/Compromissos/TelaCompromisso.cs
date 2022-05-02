@@ -43,7 +43,7 @@ namespace Apresentacao.WinApp.Compromissos
                 return;
             }
             Hide();
-            Editar editar = new(compromissoRepositorio, posicao);
+            Editar editar = new(compromissoRepositorio, posicao, contatoRepositorio);
             if (editar.ShowDialog() == DialogResult.Cancel)
             {
                 editarLinha(posicao);
@@ -85,9 +85,12 @@ namespace Apresentacao.WinApp.Compromissos
         }
         private void AdicionarLinha(bool adicionarListaCompleta)
         {
-            int i = adicionarListaCompleta ? 0 : compromissoRepositorio.EntidadeList.Count;
-
-            while (i < contatoRepositorio.EntidadeList.Count)
+            if (compromissoRepositorio.EntidadeList.Count == 0)
+                return;
+            int i = adicionarListaCompleta ? 0 : compromissoRepositorio.EntidadeList.Count - 1;
+            string contatoNull = compromissoRepositorio.EntidadeList[i].Contato == null ?
+                "Sem Contato Associado" : compromissoRepositorio.EntidadeList[i].Contato.ToString();
+            while (i < compromissoRepositorio.EntidadeList.Count)
             {
                 ListViewItem coluna = new("" + i);
 
@@ -96,7 +99,7 @@ namespace Apresentacao.WinApp.Compromissos
                 coluna.SubItems.Add(compromissoRepositorio.EntidadeList[i].Data.ToString());
                 coluna.SubItems.Add(compromissoRepositorio.EntidadeList[i].HoraInicio.ToString());
                 coluna.SubItems.Add(compromissoRepositorio.EntidadeList[i].HoraTermino.ToString());
-                coluna.SubItems.Add(compromissoRepositorio.EntidadeList[i].Contato.ToString());
+                coluna.SubItems.Add(contatoNull);
 
                 listView1.Items.Add(coluna);
                 i++;
