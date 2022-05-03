@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infra", "Infra\Infra.csproj", "{01F43939-EE6A-4869-86CC-9512E05CDDE5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infra", "Infra\Infra.csproj", "{01F43939-EE6A-4869-86CC-9512E05CDDE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dominio", "Dominio\Dominio.csproj", "{29BADD93-F211-4051-85F1-19B822FE7E98}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dominio", "Dominio\Dominio.csproj", "{29BADD93-F211-4051-85F1-19B822FE7E98}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Apresentacao", "1 - Apresentacao", "{66F281AA-6A60-4A28-9BC1-7515E49703DE}"
 EndProject
@@ -13,9 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Dominio", "2 - Dominio"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Infra", "3 - Infra", "{86CB4C73-25F8-4714-A4DA-7EE628B8D95F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eAgendaComTela.WinApp", "eAgendaComTela.WinForms\eAgendaComTela.WinApp.csproj", "{8846195D-5F26-4CFE-A021-4FA31E78CC41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eAgendaComTela.WinApp", "eAgendaComTela.WinForms\eAgendaComTela.WinApp.csproj", "{8846195D-5F26-4CFE-A021-4FA31E78CC41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apresentacao.WinApp", "Apresentacao.WinApp\Apresentacao.WinApp.csproj", "{C7E0065E-ECE6-4623-918D-3A5D03CE4530}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Apresentacao.WinApp", "Apresentacao.WinApp\Apresentacao.WinApp.csproj", "{C7E0065E-ECE6-4623-918D-3A5D03CE4530}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

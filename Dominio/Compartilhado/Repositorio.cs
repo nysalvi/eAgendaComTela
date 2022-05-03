@@ -30,5 +30,9 @@ namespace Dominio.Compartilhado
         {
             entidadeList.Remove(entidade);
         }
+        public void Excluir(Predicate<T> match)
+        {
+            entidadeList.RemoveAll(match);
+        }
     }
 }

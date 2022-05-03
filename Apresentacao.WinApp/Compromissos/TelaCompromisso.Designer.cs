@@ -32,10 +32,10 @@
             this.columnHeaderID = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderAssunto = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderLocal = new System.Windows.Forms.ColumnHeader();
+            this.columnHeaderData = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderHoraInicio = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderHoraFinal = new System.Windows.Forms.ColumnHeader();
             this.columnHeaderContato = new System.Windows.Forms.ColumnHeader();
-            this.columnHeaderData = new System.Windows.Forms.ColumnHeader();
             this.buttonExcluir = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.buttonInserir = new System.Windows.Forms.Button();
@@ -52,8 +52,11 @@
             this.columnHeaderHoraInicio,
             this.columnHeaderHoraFinal,
             this.columnHeaderContato});
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(85, 77);
+            this.listView1.MultiSelect = false;
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(638, 292);
             this.listView1.TabIndex = 0;
@@ -75,6 +78,11 @@
             this.columnHeaderLocal.Text = "Local:";
             this.columnHeaderLocal.Width = 100;
             // 
+            // columnHeaderData
+            // 
+            this.columnHeaderData.Text = "Data:";
+            this.columnHeaderData.Width = 80;
+            // 
             // columnHeaderHoraInicio
             // 
             this.columnHeaderHoraInicio.Text = "Hora Ini:";
@@ -89,11 +97,6 @@
             // 
             this.columnHeaderContato.Text = "Contato:";
             this.columnHeaderContato.Width = 200;
-            // 
-            // columnHeaderData
-            // 
-            this.columnHeaderData.Text = "Data:";
-            this.columnHeaderData.Width = 80;
             // 
             // buttonExcluir
             // 

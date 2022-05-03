@@ -46,12 +46,12 @@ namespace Apresentacao.WinApp.Compromissos
             {
                 if (compromissoRepositorio.EntidadeList.Count > 0)
                 {
-                    Compromisso compromissoConflitante = compromissoRepositorio.EntidadeList.Find(x=> c.Data == 
+                    Compromisso? compromissoConflitante = compromissoRepositorio.EntidadeList.Find(x=> c.Data == 
                     data.Date 
                     && ((c.HoraInicio > x.HoraInicio && c.HoraInicio < x.HoraTermino) 
                     || (c.HoraTermino < x.HoraTermino && c.HoraTermino > x.HoraInicio))
                     );
-                    if (compromissoConflitante == null){
+                    if (compromissoConflitante != null){
                         MessageBox.Show("Horário do Compromisso é conflitante com o de outros Compromissos!!!", 
                             "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;

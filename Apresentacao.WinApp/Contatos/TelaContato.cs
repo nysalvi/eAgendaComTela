@@ -9,14 +9,15 @@ namespace Apresentacao.WinApp.Contatos
     public partial class TelaContato : Form
     {
         Repositorio<Dominio.Contato> contatoRepositorio;
+        readonly Repositorio<Compromisso> compromissoRepositorio;
         public int totalContatos;
-        public TelaContato(Repositorio<Dominio.Contato> contatoRepositorio)
+        public TelaContato(Repositorio<Dominio.Contato> contatoRepositorio, Repositorio<Compromisso> compromissoRepositorio)
         {
             InitializeComponent();
             this.contatoRepositorio = contatoRepositorio;
+            this.compromissoRepositorio = compromissoRepositorio;
             totalContatos = contatoRepositorio.EntidadeList.Count;
             AdicionarLinha(true);
-            //dataGridView.DataSource = contatoRepositorio.EntidadeList;
         }
         private void buttonInserir_Click(object sender, System.EventArgs e)
         {
@@ -62,9 +63,16 @@ namespace Apresentacao.WinApp.Contatos
                 MessageBox.Show("Seleção Inválida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
+            Dominio.Contato contato = contatoRepositorio.EntidadeList.Find(x => x.Numero == posicao);
+            if (compromissoRepositorio.EntidadeList.Find(x => x.Contato == contato) == null)
+            {
+                MessageBox.Show("O Contato Está Atrelado a um Compromisso", "ERRO", MessageBoxButtons.OK, 
+                    MessageBoxIcon.Error);
+                return;
+            }
             ListViewItem coluna = listView1.SelectedItems[0];
             listView1.Items.Remove(coluna);
+            contatoRepositorio.Excluir(contato);
         }
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
@@ -84,7 +92,7 @@ namespace Apresentacao.WinApp.Contatos
         {
             if (contatoRepositorio.EntidadeList.Count == 0)
                 return;
-            int i = adicionarListaCompleta ? 0 : contatoRepositorio.EntidadeList.Count - 1;
+            int i = adicionarListaCompleta ? 0 : totalContatos;
 
             while (i < contatoRepositorio.EntidadeList.Count)
             {

@@ -67,6 +67,7 @@ namespace Apresentacao.WinApp.Compromissos
 
             ListViewItem coluna = listView1.SelectedItems[0];
             listView1.Items.Remove(coluna);
+            compromissoRepositorio.Excluir(x => x.Numero == posicao);
         }
         private void buttonCancel_Click(object sender, EventArgs e)
         {
@@ -87,7 +88,7 @@ namespace Apresentacao.WinApp.Compromissos
         {
             if (compromissoRepositorio.EntidadeList.Count == 0)
                 return;
-            int i = adicionarListaCompleta ? 0 : compromissoRepositorio.EntidadeList.Count - 1;
+            int i = adicionarListaCompleta ? 0 : totalCompromissos ;
             string contatoNull = compromissoRepositorio.EntidadeList[i].Contato == null ?
                 "Sem Contato Associado" : compromissoRepositorio.EntidadeList[i].Contato.ToString();
             while (i < compromissoRepositorio.EntidadeList.Count)

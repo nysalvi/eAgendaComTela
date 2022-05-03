@@ -26,7 +26,7 @@ namespace eAgendaComTela.WinApp
         }
         private void buttonContato_Click(object sender, EventArgs e)
         {
-            TelaContato contato = new (contatoRepositorio);
+            TelaContato contato = new (contatoRepositorio, compromissoRepositorio);
             Hide();
             if (contato.ShowDialog() == DialogResult.Cancel)
                 Show();
