@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Dominio.Compartilhado;
 
-namespace Dominio.Tarefa
+namespace Dominio
 {
     public class Tarefa : Entidade
     {

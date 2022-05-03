@@ -1,6 +1,6 @@
 ﻿using Dominio.Compartilhado;
 
-namespace Dominio.Tarefa
+namespace Dominio
 {
     public class Item : Entidade
     {
