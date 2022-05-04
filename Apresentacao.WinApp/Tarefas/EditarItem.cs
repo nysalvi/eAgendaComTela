@@ -10,7 +10,7 @@ namespace Apresentacao.WinApp.Tarefas
         public EditarItem(Tarefa tarefa)
         {
             InitializeComponent();
-            comboBoxConcluido.Items.Add(tarefa.itens);
+            comboBoxItem.Items.AddRange(tarefa.itens.ToArray());
             this.tarefa = tarefa;
         }
 

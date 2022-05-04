@@ -42,7 +42,8 @@ namespace Apresentacao.WinApp.Tarefas
             }
             Tarefa t = new Tarefa(titulo, tarefaAntiga.Criacao, prioridade);
             string resultado = t.Validar();
-            Tarefa? tarefaConflitante = tarefaRepositorio.EntidadeList.Find(x => x.Titulo == t.Titulo);
+            Tarefa? tarefaConflitante = tarefaRepositorio.EntidadeList.Find(x => x != tarefaAntiga 
+                && x.Titulo == t.Titulo);
             if (tarefaConflitante != null)
             {
                 MessageBox.Show("Título da Tarefa já existe em outra Tarefa!!!",
