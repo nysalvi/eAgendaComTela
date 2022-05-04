@@ -14,10 +14,10 @@ namespace Dominio
         public bool Concluido { get; set; }
 
         public string EstaConcluido => Concluido ? "Concluída" : "Incompleta";
-        public Item(string descricao)
+        public Item(string descricao, bool concluido)
         {
             Descricao = descricao;
-            Concluido = false;
+            Concluido = concluido;
         }
         public override string ToString()
         {
@@ -26,7 +26,7 @@ namespace Dominio
         public override string Validar()
         {
             if (string.IsNullOrEmpty(Descricao))
-                return "A descrição não pode ser vazio";
+                return "A descrição não pode ser vazia";
             return "sucesso";
         }
     }

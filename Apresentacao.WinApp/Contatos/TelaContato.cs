@@ -63,8 +63,8 @@ namespace Apresentacao.WinApp.Contatos
                 MessageBox.Show("Seleção Inválida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Dominio.Contato contato = contatoRepositorio.EntidadeList.Find(x => x.Numero == posicao);
-            if (compromissoRepositorio.EntidadeList.Find(x => x.Contato == contato) == null)
+            Dominio.Contato? contato = contatoRepositorio.EntidadeList.Find(x => x.Numero == posicao);
+            if (compromissoRepositorio.EntidadeList.Find(x => x.Contato == contato) != null)
             {
                 MessageBox.Show("O Contato Está Atrelado a um Compromisso", "ERRO", MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
@@ -72,7 +72,7 @@ namespace Apresentacao.WinApp.Contatos
             }
             ListViewItem coluna = listView1.SelectedItems[0];
             listView1.Items.Remove(coluna);
-            contatoRepositorio.Excluir(contato);
+            contatoRepositorio.Excluir(contato!);
         }
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
@@ -134,7 +134,6 @@ namespace Apresentacao.WinApp.Contatos
             }
             AgruparCargo();
         }
-
         private  void AgruparCargo()
         {
             listView1.Items.Clear();

@@ -82,7 +82,7 @@ namespace Apresentacao.WinApp.Compromissos
             coluna.SubItems[3].Text = compromisso.Data.ToString();
             coluna.SubItems[4].Text = compromisso.HoraInicio.ToString();
             coluna.SubItems[5].Text = compromisso.HoraTermino.ToString();
-            coluna.SubItems[6].Text = compromisso.Contato.ToString();
+            coluna.SubItems[6].Text = compromisso.Contato == null ? "" : compromisso.Contato.ToString();
         }
         private void AdicionarLinha(bool adicionarListaCompleta)
         {

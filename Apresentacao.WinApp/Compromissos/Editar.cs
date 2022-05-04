@@ -66,12 +66,9 @@ namespace Apresentacao.WinApp.Compromissos
                 MessageBox.Show("Cliente Editado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
                 Close();
-            }
-            else
-            {
-                MessageBox.Show(resultado, "ERRO", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
+            }           
+            MessageBox.Show(resultado, "ERRO", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
         }
         private bool campoVazio()
         {

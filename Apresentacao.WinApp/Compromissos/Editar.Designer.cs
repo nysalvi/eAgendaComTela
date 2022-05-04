@@ -104,7 +104,7 @@
             this.maskedTextBoxHoraFinal.Mask = "00:00";
             this.maskedTextBoxHoraFinal.Name = "maskedTextBoxHoraFinal";
             this.maskedTextBoxHoraFinal.Size = new System.Drawing.Size(356, 23);
-            this.maskedTextBoxHoraFinal.TabIndex = 31;
+            this.maskedTextBoxHoraFinal.TabIndex = 4;
             this.maskedTextBoxHoraFinal.ValidatingType = typeof(System.DateTime);
             // 
             // maskedTextBoxHoraInicio
@@ -113,7 +113,7 @@
             this.maskedTextBoxHoraInicio.Mask = "00:00";
             this.maskedTextBoxHoraInicio.Name = "maskedTextBoxHoraInicio";
             this.maskedTextBoxHoraInicio.Size = new System.Drawing.Size(356, 23);
-            this.maskedTextBoxHoraInicio.TabIndex = 30;
+            this.maskedTextBoxHoraInicio.TabIndex = 3;
             this.maskedTextBoxHoraInicio.ValidatingType = typeof(System.DateTime);
             // 
             // maskedTextBoxData
@@ -122,7 +122,7 @@
             this.maskedTextBoxData.Mask = "00/00/0000";
             this.maskedTextBoxData.Name = "maskedTextBoxData";
             this.maskedTextBoxData.Size = new System.Drawing.Size(356, 23);
-            this.maskedTextBoxData.TabIndex = 29;
+            this.maskedTextBoxData.TabIndex = 2;
             this.maskedTextBoxData.TabStop = false;
             this.maskedTextBoxData.ValidatingType = typeof(System.DateTime);
             // 
@@ -131,14 +131,14 @@
             this.textBoxLocal.Location = new System.Drawing.Point(157, 77);
             this.textBoxLocal.Name = "textBoxLocal";
             this.textBoxLocal.Size = new System.Drawing.Size(356, 23);
-            this.textBoxLocal.TabIndex = 28;
+            this.textBoxLocal.TabIndex = 1;
             // 
             // textBoxAssunto
             // 
             this.textBoxAssunto.Location = new System.Drawing.Point(157, 32);
             this.textBoxAssunto.Name = "textBoxAssunto";
             this.textBoxAssunto.Size = new System.Drawing.Size(356, 23);
-            this.textBoxAssunto.TabIndex = 27;
+            this.textBoxAssunto.TabIndex = 0;
             // 
             // comboBox1
             // 
@@ -149,14 +149,14 @@
             this.comboBox1.Location = new System.Drawing.Point(157, 251);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(169, 23);
-            this.comboBox1.TabIndex = 32;
+            this.comboBox1.TabIndex = 5;
             // 
             // buttonVoltar
             // 
             this.buttonVoltar.Location = new System.Drawing.Point(419, 361);
             this.buttonVoltar.Name = "buttonVoltar";
             this.buttonVoltar.Size = new System.Drawing.Size(94, 49);
-            this.buttonVoltar.TabIndex = 34;
+            this.buttonVoltar.TabIndex = 7;
             this.buttonVoltar.Text = "Voltar";
             this.buttonVoltar.UseVisualStyleBackColor = true;
             this.buttonVoltar.Click += new System.EventHandler(this.buttonVoltar_Click);
@@ -166,7 +166,7 @@
             this.buttonEditar.Location = new System.Drawing.Point(419, 269);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(94, 49);
-            this.buttonEditar.TabIndex = 33;
+            this.buttonEditar.TabIndex = 6;
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
             this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);

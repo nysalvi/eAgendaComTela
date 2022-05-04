@@ -11,7 +11,6 @@ namespace Dominio.Compartilhado
     {
         abstract public int Total { get; set; }
         public int Numero { get; set; }
-
         public IEnumerator<Entidade> GetEnumerator()
         {
             throw new NotImplementedException();
