@@ -19,7 +19,7 @@ namespace Dominio
         public DateTime Criacao { get; set; }
         public DateTime? Conclusao { 
             get {
-                return conclusao == default ? null : Conclusao;
+                return conclusao;
             } set { conclusao = value; } 
         }
         public decimal Percentual { get; set; }

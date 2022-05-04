@@ -60,6 +60,8 @@ namespace Apresentacao.WinApp.Tarefas
             tarefa.itens.Editar(item, posicaoItem);
             MessageBox.Show("Item Editado Com Sucesso!", resultado, MessageBoxButtons.OK,
             MessageBoxIcon.Asterisk);
+            comboBoxItem.Items.Clear();
+            comboBoxItem.Items.AddRange(tarefa.itens.GetAll.ToArray());
 
         }
 

@@ -193,6 +193,7 @@ namespace Apresentacao.WinApp.Tarefas
             Hide();
             if (editar.ShowDialog() == DialogResult.Cancel)
             {
+                tarefa.AtualizaPorcentagem();
                 editarLinha(posicao);
                 Show();
             }
