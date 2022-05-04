@@ -85,6 +85,7 @@
             // 
             // comboBoxPrioridade
             // 
+            this.comboBoxPrioridade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPrioridade.FormattingEnabled = true;
             this.comboBoxPrioridade.Items.AddRange(new object[] {
             "Alta",

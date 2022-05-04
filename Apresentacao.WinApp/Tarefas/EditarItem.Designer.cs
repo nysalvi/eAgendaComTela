@@ -65,7 +65,7 @@
             "Nao"});
             this.comboBoxConcluido.Location = new System.Drawing.Point(202, 128);
             this.comboBoxConcluido.Name = "comboBoxConcluido";
-            this.comboBoxConcluido.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxConcluido.Size = new System.Drawing.Size(137, 23);
             this.comboBoxConcluido.TabIndex = 2;
             // 
             // textBoxDescricao

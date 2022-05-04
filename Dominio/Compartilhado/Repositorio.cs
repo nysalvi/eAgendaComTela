@@ -40,7 +40,7 @@ namespace Dominio.Compartilhado
 
         public List<T> FindAll(Predicate<T> pred)
         {
-            return entidadeList.FindAll(pred);
+            return new List<T>(entidadeList.FindAll(pred));
         }
 
         public T Find(Predicate<T> pred)

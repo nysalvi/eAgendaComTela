@@ -28,7 +28,7 @@ namespace Apresentacao.WinApp.Tarefas
             string descricao = textBoxDescricao.Text;
             bool concluido = comboBoxConcluido.Text == "Sim" ? true : false;
 
-            if (descricao == itemAntigo.Descricao && concluido == itemAntigo.Concluido)
+            if (descricao == "" && concluido == itemAntigo.Concluido)
             {
                 MessageBox.Show("Pelo Menos Um dos Itens Precisam Ser Alterados", "ERRO", MessageBoxButtons.OK,
                 MessageBoxIcon.Error);
@@ -45,8 +45,7 @@ namespace Apresentacao.WinApp.Tarefas
                 return;
             }
 
-
-            Item? itemConflitante = tarefa.itens.Find(x => x != itemAntigo && x.Descricao == descricao);
+            Item? itemConflitante = tarefa.itens.Find(x => x.Numero != itemAntigo.Numero && x.Descricao == descricao);
 
             if (itemConflitante != null)
             {

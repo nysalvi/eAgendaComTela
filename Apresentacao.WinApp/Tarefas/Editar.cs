@@ -42,10 +42,10 @@ namespace Apresentacao.WinApp.Tarefas
                     MessageBoxIcon.Warning);
                 return;
             }
-            Tarefa t = new Tarefa(titulo, tarefaAntiga.Criacao, prioridade);
-            string resultado = t.Validar();
-            Tarefa? tarefaConflitante = tarefaRepositorio.Find(x => x != tarefaAntiga 
-                && x.Titulo == t.Titulo);
+            Tarefa tarefa = new Tarefa(titulo, tarefaAntiga.Criacao, prioridade);
+            string resultado = tarefa.Validar();
+            Tarefa? tarefaConflitante = tarefaRepositorio.Find(x => x.Numero != tarefaAntiga.Numero
+                && x.Titulo == tarefa.Titulo);
             if (tarefaConflitante != null)
             {
                 MessageBox.Show("Título da Tarefa já existe em outra Tarefa!!!",
@@ -55,7 +55,7 @@ namespace Apresentacao.WinApp.Tarefas
 
             if (resultado == "sucesso")
             {
-                tarefaRepositorio.Editar(t, posicaoTarefa);
+                tarefaRepositorio.Editar(tarefa, posicaoTarefa);
                 MessageBox.Show("Tarefa Editada Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
                 Close();

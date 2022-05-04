@@ -63,7 +63,7 @@ namespace Apresentacao.WinApp.Compromissos
             if (resultado == "sucesso")
             {
                 compromissoRepositorio.Editar(c, posicaoCompromisso);
-                MessageBox.Show("Cliente Editado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK,
+                MessageBox.Show("Compromisso Editado Com Sucesso!!!", "SUCESSO", MessageBoxButtons.OK,
                     MessageBoxIcon.Asterisk);
                 Close();
             }           

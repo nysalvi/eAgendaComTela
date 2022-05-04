@@ -8,12 +8,10 @@ namespace Apresentacao.WinApp.Compromissos
     public partial class Inserir : Form
     {
         Repositorio<Compromisso> compromissoRepositorio;
-        Repositorio<Dominio.Contato> contatoRepositorio;
         public Inserir(Repositorio<Compromisso> compromissoRepositorio, Repositorio<Dominio.Contato> contatoRepositorio)
         {
             InitializeComponent();
             this.compromissoRepositorio = compromissoRepositorio;
-            this.contatoRepositorio = contatoRepositorio;
             comboBox1.SelectedIndex = 0;
             //comboBox1.Items.Add();            
             contatoRepositorio.ForEach = x =>
@@ -38,9 +36,9 @@ namespace Apresentacao.WinApp.Compromissos
             TimeSpan? timespanFinal = 
                     maskedTextBoxHoraFinal.Text == "" ? null : TimeSpan.Parse(maskedTextBoxHoraInicio.Text);
             
-            Dominio.Contato contato = comboBox1.SelectedIndex == 0 ? null : (Dominio.Contato)comboBox1.SelectedItem;
+            Dominio.Contato? contato = comboBox1.SelectedIndex == 0 ? null : (Dominio.Contato)comboBox1.SelectedItem;
 
-            Compromisso c = new(assunto, local, data, timespanInicio!, timespanFinal!, contato);
+            Compromisso c = new(assunto, local, data, timespanInicio!, timespanFinal!, contato!);
             string resultado = c.Validar();
             if (resultado == "sucesso")
             {
