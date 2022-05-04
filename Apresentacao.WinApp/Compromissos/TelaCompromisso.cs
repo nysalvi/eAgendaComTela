@@ -16,7 +16,7 @@ namespace Apresentacao.WinApp.Compromissos
             InitializeComponent();
             this.compromissoRepositorio = compromissoRepositorio;
             this.contatoRepositorio = contatoRepositorio;
-            totalCompromissos = compromissoRepositorio.EntidadeList.Count;
+            totalCompromissos = compromissoRepositorio.Count;
             AdicionarLinha(true);
         }
         private void buttonInserir_Click(object sender, EventArgs e)
@@ -76,7 +76,7 @@ namespace Apresentacao.WinApp.Compromissos
         private void editarLinha(int posicao)
         {
             ListViewItem coluna = listView1.SelectedItems[0];
-            Compromisso compromisso = compromissoRepositorio.EntidadeList[posicao];
+            Compromisso compromisso = compromissoRepositorio.Get(posicao);
             coluna.SubItems[1].Text = compromisso.Assunto;
             coluna.SubItems[2].Text = compromisso.Local;
             coluna.SubItems[3].Text = compromisso.Data.ToString();
@@ -86,26 +86,26 @@ namespace Apresentacao.WinApp.Compromissos
         }
         private void AdicionarLinha(bool adicionarListaCompleta)
         {
-            if (compromissoRepositorio.EntidadeList.Count == 0)
+            if (compromissoRepositorio.Count == 0)
                 return;
             int i = adicionarListaCompleta ? 0 : totalCompromissos ;
-            string contatoNull = compromissoRepositorio.EntidadeList[i].Contato == null ?
-                "Sem Contato Associado" : compromissoRepositorio.EntidadeList[i].Contato.ToString();
-            while (i < compromissoRepositorio.EntidadeList.Count)
+            string contatoNull = compromissoRepositorio.Get(i).Contato == null ?
+                "Sem Contato Associado" : compromissoRepositorio.Get(i).Contato.ToString();
+            while (i < compromissoRepositorio.Count)
             {
                 ListViewItem coluna = new("" + i);
 
-                coluna.SubItems.Add(compromissoRepositorio.EntidadeList[i].Assunto);
-                coluna.SubItems.Add(compromissoRepositorio.EntidadeList[i].Local);
-                coluna.SubItems.Add(compromissoRepositorio.EntidadeList[i].Data.ToString());
-                coluna.SubItems.Add(compromissoRepositorio.EntidadeList[i].HoraInicio.ToString());
-                coluna.SubItems.Add(compromissoRepositorio.EntidadeList[i].HoraTermino.ToString());
+                coluna.SubItems.Add(compromissoRepositorio.Get(i).Assunto);
+                coluna.SubItems.Add(compromissoRepositorio.Get(i).Local);
+                coluna.SubItems.Add(compromissoRepositorio.Get(i).Data.ToString());
+                coluna.SubItems.Add(compromissoRepositorio.Get(i).HoraInicio.ToString());
+                coluna.SubItems.Add(compromissoRepositorio.Get(i).HoraTermino.ToString());
                 coluna.SubItems.Add(contatoNull);
 
                 listView1.Items.Add(coluna);
                 i++;
             }
-            totalCompromissos = compromissoRepositorio.EntidadeList.Count;
+            totalCompromissos = compromissoRepositorio.Count;
         }
     }
 }

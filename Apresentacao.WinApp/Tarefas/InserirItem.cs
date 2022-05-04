@@ -10,6 +10,7 @@ namespace Apresentacao.WinApp.Tarefas
         {
             InitializeComponent();
             this.tarefa = tarefa;
+            comboBox1.SelectedIndex = 0;
         }
         private void buttonCriar_Click(object sender, EventArgs e)
         {

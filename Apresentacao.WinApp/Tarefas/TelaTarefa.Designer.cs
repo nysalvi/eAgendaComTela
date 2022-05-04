@@ -107,17 +107,17 @@
             this.buttonFechar.Location = new System.Drawing.Point(606, 282);
             this.buttonFechar.Name = "buttonFechar";
             this.buttonFechar.Size = new System.Drawing.Size(97, 39);
-            this.buttonFechar.TabIndex = 2;
+            this.buttonFechar.TabIndex = 7;
             this.buttonFechar.Text = "Fechar";
             this.buttonFechar.UseVisualStyleBackColor = true;
             this.buttonFechar.Click += new System.EventHandler(this.buttonFechar_Click);
             // 
             // buttonEditar
             // 
-            this.buttonEditar.Location = new System.Drawing.Point(606, 57);
+            this.buttonEditar.Location = new System.Drawing.Point(606, 58);
             this.buttonEditar.Name = "buttonEditar";
             this.buttonEditar.Size = new System.Drawing.Size(97, 39);
-            this.buttonEditar.TabIndex = 3;
+            this.buttonEditar.TabIndex = 2;
             this.buttonEditar.Text = "Editar";
             this.buttonEditar.UseVisualStyleBackColor = true;
             this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
@@ -127,7 +127,7 @@
             this.buttonExcluir.Location = new System.Drawing.Point(606, 102);
             this.buttonExcluir.Name = "buttonExcluir";
             this.buttonExcluir.Size = new System.Drawing.Size(97, 39);
-            this.buttonExcluir.TabIndex = 4;
+            this.buttonExcluir.TabIndex = 3;
             this.buttonExcluir.Text = "Excluir";
             this.buttonExcluir.UseVisualStyleBackColor = true;
             this.buttonExcluir.Click += new System.EventHandler(this.buttonExcluir_Click);
@@ -137,7 +137,7 @@
             this.buttonConcluidas.Location = new System.Drawing.Point(606, 147);
             this.buttonConcluidas.Name = "buttonConcluidas";
             this.buttonConcluidas.Size = new System.Drawing.Size(97, 39);
-            this.buttonConcluidas.TabIndex = 5;
+            this.buttonConcluidas.TabIndex = 4;
             this.buttonConcluidas.Text = "Concluidas";
             this.buttonConcluidas.UseVisualStyleBackColor = true;
             this.buttonConcluidas.Click += new System.EventHandler(this.buttonConcluidas_Click);
@@ -147,7 +147,7 @@
             this.buttonAdicionarItem.Location = new System.Drawing.Point(606, 192);
             this.buttonAdicionarItem.Name = "buttonAdicionarItem";
             this.buttonAdicionarItem.Size = new System.Drawing.Size(97, 39);
-            this.buttonAdicionarItem.TabIndex = 6;
+            this.buttonAdicionarItem.TabIndex = 5;
             this.buttonAdicionarItem.Text = "Adicionar Item";
             this.buttonAdicionarItem.UseVisualStyleBackColor = true;
             this.buttonAdicionarItem.Click += new System.EventHandler(this.buttonAdicionarItem_Click);
@@ -157,7 +157,7 @@
             this.buttonAtualizarItem.Location = new System.Drawing.Point(606, 237);
             this.buttonAtualizarItem.Name = "buttonAtualizarItem";
             this.buttonAtualizarItem.Size = new System.Drawing.Size(97, 39);
-            this.buttonAtualizarItem.TabIndex = 7;
+            this.buttonAtualizarItem.TabIndex = 6;
             this.buttonAtualizarItem.Text = "Atualizar Item";
             this.buttonAtualizarItem.UseVisualStyleBackColor = true;
             this.buttonAtualizarItem.Click += new System.EventHandler(this.buttonAtualizarItem_Click);

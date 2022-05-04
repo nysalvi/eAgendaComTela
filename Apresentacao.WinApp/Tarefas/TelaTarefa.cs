@@ -14,7 +14,7 @@ namespace Apresentacao.WinApp.Tarefas
         {
             InitializeComponent();
             this.tarefaRepositorio = tarefaRepositorio;
-            this.totalTarefas = tarefaRepositorio.EntidadeList.Count;
+            this.totalTarefas = tarefaRepositorio.Count;
             AdicionarLinha(true);
         }
 
@@ -30,25 +30,24 @@ namespace Apresentacao.WinApp.Tarefas
         }
         private void AdicionarLinha(bool adicionarListaCompleta)
         {
-            if (tarefaRepositorio.EntidadeList.Count == 0)
+            if (tarefaRepositorio.Count == 0)
                 return;
             int i = adicionarListaCompleta ? 0 : totalTarefas;
 
-            while (i < tarefaRepositorio.EntidadeList.Count)
+            while (i < tarefaRepositorio.Count)
             {
                 ListViewItem coluna = new("" + i);
 
-
-                coluna.SubItems.Add(tarefaRepositorio.EntidadeList[i].Titulo);
-                coluna.SubItems.Add(tarefaRepositorio.EntidadeList[i].Prioridade.ToString());
-                coluna.SubItems.Add(tarefaRepositorio.EntidadeList[i].Criacao.ToString());
-                coluna.SubItems.Add(tarefaRepositorio.EntidadeList[i].Conclusao.ToString());
-                coluna.SubItems.Add(tarefaRepositorio.EntidadeList[i].Percentual.ToString());
+                coluna.SubItems.Add(tarefaRepositorio.Get(i).Titulo);
+                coluna.SubItems.Add(tarefaRepositorio.Get(i).Prioridade.ToString());
+                coluna.SubItems.Add(tarefaRepositorio.Get(i).Criacao.ToString());
+                coluna.SubItems.Add(tarefaRepositorio.Get(i).Conclusao.ToString());
+                coluna.SubItems.Add(tarefaRepositorio.Get(i).Percentual.ToString());
 
                 listView1.Items.Add(coluna);
                 i++;
             }
-            totalTarefas = tarefaRepositorio.EntidadeList.Count;
+            totalTarefas = tarefaRepositorio.Count;
         }
 
         private void buttonFechar_Click(object sender, System.EventArgs e)
@@ -80,7 +79,7 @@ namespace Apresentacao.WinApp.Tarefas
         private void editarLinha(int posicao)
         {
             ListViewItem coluna = listView1.SelectedItems[0];
-            Tarefa tarefa = tarefaRepositorio.EntidadeList[posicao];
+            Tarefa tarefa = tarefaRepositorio.Get(posicao);
             coluna.SubItems[1].Text = tarefa.Titulo;
             coluna.SubItems[2].Text = tarefa.Prioridade.ToString();
             coluna.SubItems[3].Text = tarefa.Criacao.ToString();
@@ -101,7 +100,7 @@ namespace Apresentacao.WinApp.Tarefas
                 MessageBox.Show("Seleção Inválida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Tarefa? tarefa = tarefaRepositorio.EntidadeList.Find(x => x.Numero == posicao);
+            Tarefa? tarefa = tarefaRepositorio.Find(x => x.Numero == posicao);
 
             if (tarefa.Percentual < 100)
             {
@@ -123,13 +122,13 @@ namespace Apresentacao.WinApp.Tarefas
 
             List<Tarefa> copia;
             if (filtro == "Concluidas")
-                copia = new List<Tarefa>(tarefaRepositorio.EntidadeList.OrderBy(x => x.Percentual == 100)
+                copia = new List<Tarefa>(tarefaRepositorio.GetAll.OrderBy(x => x.Percentual == 100)
                     .ThenBy(x => x.Prioridade));
             else if (filtro == "Pendentes")
-                copia = new List<Tarefa>(tarefaRepositorio.EntidadeList.OrderBy(x => x.Percentual < 100)
+                copia = new List<Tarefa>(tarefaRepositorio.GetAll.OrderBy(x => x.Percentual < 100)
                     .ThenBy(x => x.Prioridade));
             else
-                copia = new (tarefaRepositorio.EntidadeList.OrderBy(x => x.Prioridade));
+                copia = new (tarefaRepositorio.GetAll.OrderBy(x => x.Prioridade));
 
             LoadListView(copia);
 
@@ -148,7 +147,7 @@ namespace Apresentacao.WinApp.Tarefas
                 MessageBox.Show("Seleção Inválida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Tarefa? tarefa = tarefaRepositorio.EntidadeList.Find(x => x.Numero == posicao);
+            Tarefa? tarefa = tarefaRepositorio.Find(x => x.Numero == posicao);
 
             InserirItem item = new InserirItem(tarefa);
             if (item.ShowDialog() == DialogResult.Cancel)
@@ -188,7 +187,7 @@ namespace Apresentacao.WinApp.Tarefas
                 MessageBox.Show("Seleção Inválida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Tarefa? tarefa = tarefaRepositorio.EntidadeList.Find(x => x.Numero == posicao);
+            Tarefa? tarefa = tarefaRepositorio.Find(x => x.Numero == posicao);
 
             EditarItem editar = new EditarItem(tarefa);
             Hide();

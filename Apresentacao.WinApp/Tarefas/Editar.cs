@@ -20,7 +20,9 @@ namespace Apresentacao.WinApp.Tarefas
             this.comboBox1.Items.Add(Tarefa.PRIORIDADE.Media);
             this.comboBox1.Items.Add(Tarefa.PRIORIDADE.Baixa);
 
-            this.tarefaAntiga = tarefaRepositorio.EntidadeList[posicaoTarefa];
+            this.tarefaAntiga = tarefaRepositorio.Get(posicaoTarefa);
+
+            this.comboBox1.SelectedItem = Tarefa.PRIORIDADE.Baixa;
         }
 
         private void buttonVoltar_Click(object sender, System.EventArgs e)
@@ -42,7 +44,7 @@ namespace Apresentacao.WinApp.Tarefas
             }
             Tarefa t = new Tarefa(titulo, tarefaAntiga.Criacao, prioridade);
             string resultado = t.Validar();
-            Tarefa? tarefaConflitante = tarefaRepositorio.EntidadeList.Find(x => x != tarefaAntiga 
+            Tarefa? tarefaConflitante = tarefaRepositorio.Find(x => x != tarefaAntiga 
                 && x.Titulo == t.Titulo);
             if (tarefaConflitante != null)
             {

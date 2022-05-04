@@ -33,7 +33,7 @@
             this.comboBoxConcluido = new System.Windows.Forms.ComboBox();
             this.textBoxDescricao = new System.Windows.Forms.TextBox();
             this.buttonVoltar = new System.Windows.Forms.Button();
-            this.buttonCriar = new System.Windows.Forms.Button();
+            this.buttonEditar = new System.Windows.Forms.Button();
             this.comboBoxItem = new System.Windows.Forms.ComboBox();
             this.labelItem = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -41,7 +41,7 @@
             // labelConcluido
             // 
             this.labelConcluido.AutoSize = true;
-            this.labelConcluido.Location = new System.Drawing.Point(41, 158);
+            this.labelConcluido.Location = new System.Drawing.Point(41, 128);
             this.labelConcluido.Name = "labelConcluido";
             this.labelConcluido.Size = new System.Drawing.Size(68, 15);
             this.labelConcluido.TabIndex = 5;
@@ -58,50 +58,52 @@
             // 
             // comboBoxConcluido
             // 
+            this.comboBoxConcluido.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxConcluido.FormattingEnabled = true;
             this.comboBoxConcluido.Items.AddRange(new object[] {
-            "Nao",
-            "Sim"});
-            this.comboBoxConcluido.Location = new System.Drawing.Point(191, 150);
+            "Sim",
+            "Nao"});
+            this.comboBoxConcluido.Location = new System.Drawing.Point(202, 128);
             this.comboBoxConcluido.Name = "comboBoxConcluido";
             this.comboBoxConcluido.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxConcluido.TabIndex = 7;
+            this.comboBoxConcluido.TabIndex = 2;
             // 
             // textBoxDescricao
             // 
-            this.textBoxDescricao.Location = new System.Drawing.Point(163, 81);
+            this.textBoxDescricao.Location = new System.Drawing.Point(108, 78);
             this.textBoxDescricao.Name = "textBoxDescricao";
-            this.textBoxDescricao.Size = new System.Drawing.Size(149, 23);
-            this.textBoxDescricao.TabIndex = 6;
+            this.textBoxDescricao.Size = new System.Drawing.Size(231, 23);
+            this.textBoxDescricao.TabIndex = 1;
             // 
             // buttonVoltar
             // 
-            this.buttonVoltar.Location = new System.Drawing.Point(202, 229);
+            this.buttonVoltar.Location = new System.Drawing.Point(202, 184);
             this.buttonVoltar.Name = "buttonVoltar";
             this.buttonVoltar.Size = new System.Drawing.Size(110, 44);
-            this.buttonVoltar.TabIndex = 9;
+            this.buttonVoltar.TabIndex = 4;
             this.buttonVoltar.Text = "Voltar";
             this.buttonVoltar.UseVisualStyleBackColor = true;
             this.buttonVoltar.Click += new System.EventHandler(this.buttonVoltar_Click);
             // 
-            // buttonCriar
+            // buttonEditar
             // 
-            this.buttonCriar.Location = new System.Drawing.Point(34, 229);
-            this.buttonCriar.Name = "buttonCriar";
-            this.buttonCriar.Size = new System.Drawing.Size(110, 44);
-            this.buttonCriar.TabIndex = 8;
-            this.buttonCriar.Text = "Criar";
-            this.buttonCriar.UseVisualStyleBackColor = true;
-            this.buttonCriar.Click += new System.EventHandler(this.buttonCriar_Click);
+            this.buttonEditar.Location = new System.Drawing.Point(41, 184);
+            this.buttonEditar.Name = "buttonEditar";
+            this.buttonEditar.Size = new System.Drawing.Size(110, 44);
+            this.buttonEditar.TabIndex = 3;
+            this.buttonEditar.Text = "Editar: ";
+            this.buttonEditar.UseVisualStyleBackColor = true;
+            this.buttonEditar.Click += new System.EventHandler(this.buttonEditar_Click);
             // 
             // comboBoxItem
             // 
+            this.comboBoxItem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxItem.FormattingEnabled = true;
-            this.comboBoxItem.Location = new System.Drawing.Point(191, 26);
+            this.comboBoxItem.Location = new System.Drawing.Point(84, 23);
             this.comboBoxItem.Name = "comboBoxItem";
-            this.comboBoxItem.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxItem.TabIndex = 10;
-            this.comboBoxItem.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
+            this.comboBoxItem.Size = new System.Drawing.Size(255, 23);
+            this.comboBoxItem.TabIndex = 0;
+            this.comboBoxItem.SelectedIndexChanged += new System.EventHandler(this.comboBoxItem_SelectedIndexChanged);
             // 
             // labelItem
             // 
@@ -116,11 +118,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 359);
+            this.ClientSize = new System.Drawing.Size(351, 264);
             this.Controls.Add(this.labelItem);
             this.Controls.Add(this.comboBoxItem);
             this.Controls.Add(this.buttonVoltar);
-            this.Controls.Add(this.buttonCriar);
+            this.Controls.Add(this.buttonEditar);
             this.Controls.Add(this.comboBoxConcluido);
             this.Controls.Add(this.textBoxDescricao);
             this.Controls.Add(this.labelConcluido);
@@ -139,7 +141,7 @@
         private System.Windows.Forms.ComboBox comboBoxConcluido;
         private System.Windows.Forms.TextBox textBoxDescricao;
         private System.Windows.Forms.Button buttonVoltar;
-        private System.Windows.Forms.Button buttonCriar;
+        private System.Windows.Forms.Button buttonEditar;
         private System.Windows.Forms.ComboBox comboBoxItem;
         private System.Windows.Forms.Label labelItem;
     }

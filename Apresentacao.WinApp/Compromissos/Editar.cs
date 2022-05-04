@@ -17,7 +17,7 @@ namespace Apresentacao.WinApp.Compromissos
             this.compromissoRepositorio = compromissoRepositorio;
             this.contatoRepositorio = contatoRepositorio;
             this.posicaoCompromisso = posicaoCompromisso;
-            contatoRepositorio.EntidadeList.ForEach(x => comboBox1.Items.Add(x));
+            contatoRepositorio.ForEach = (x => comboBox1.Items.Add(x));
             
         }
 
@@ -28,7 +28,7 @@ namespace Apresentacao.WinApp.Compromissos
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            Compromisso compromissoAntigo = compromissoRepositorio.EntidadeList[posicaoCompromisso];
+            Compromisso compromissoAntigo = compromissoRepositorio.Get(posicaoCompromisso);
 
             string assunto = textBoxAssunto.Text == "" ? compromissoAntigo.Assunto : textBoxAssunto.Text;
             string local = textBoxLocal.Text == "" ? compromissoAntigo.Local : textBoxLocal.Text;
@@ -49,7 +49,7 @@ namespace Apresentacao.WinApp.Compromissos
             Compromisso c = new(assunto, local, data, horaInicio, horaFinal, null);
             string resultado = c.Validar();
 
-            Compromisso? compromissoConflitante = compromissoRepositorio.EntidadeList.Find(x => c.Data == data.Date
+            Compromisso? compromissoConflitante = compromissoRepositorio.Find(x => c.Data == data.Date
             && ((c.HoraInicio > x.HoraInicio && c.HoraInicio < x.HoraTermino)
             || (c.HoraTermino < x.HoraTermino && c.HoraTermino > x.HoraInicio)));
 

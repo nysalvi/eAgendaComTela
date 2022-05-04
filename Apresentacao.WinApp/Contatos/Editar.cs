@@ -23,7 +23,7 @@ namespace Apresentacao.WinApp.Contatos
 
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            Dominio.Contato contatoAntigo = contatoRepositorio.EntidadeList[posicaoContato];
+            Dominio.Contato contatoAntigo = contatoRepositorio.Get(posicaoContato);
 
             string nome = textBoxNome.Text == "" ? contatoAntigo.Nome : textBoxNome.Text;
             string email = textBoxEmail.Text == "" ? contatoAntigo.Email : textBoxEmail.Text;

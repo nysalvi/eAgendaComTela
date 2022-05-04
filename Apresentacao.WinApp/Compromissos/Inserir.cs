@@ -16,10 +16,10 @@ namespace Apresentacao.WinApp.Compromissos
             this.contatoRepositorio = contatoRepositorio;
             comboBox1.SelectedIndex = 0;
             //comboBox1.Items.Add();            
-            contatoRepositorio.EntidadeList.ForEach(x =>
+            contatoRepositorio.ForEach = x =>
             {
                 comboBox1.Items.Add(x);
-            });
+            };
         }
 
         private void buttonVoltar_Click(object sender, EventArgs e)
@@ -44,9 +44,9 @@ namespace Apresentacao.WinApp.Compromissos
             string resultado = c.Validar();
             if (resultado == "sucesso")
             {
-                if (compromissoRepositorio.EntidadeList.Count > 0)
+                if (compromissoRepositorio.Count > 0)
                 {
-                    Compromisso? compromissoConflitante = compromissoRepositorio.EntidadeList.Find(x=> c.Data == 
+                    Compromisso? compromissoConflitante = compromissoRepositorio.Find(x=> c.Data == 
                     data.Date 
                     && ((c.HoraInicio > x.HoraInicio && c.HoraInicio < x.HoraTermino) 
                     || (c.HoraTermino < x.HoraTermino && c.HoraTermino > x.HoraInicio))

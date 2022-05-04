@@ -16,7 +16,7 @@ namespace Apresentacao.WinApp.Contatos
             InitializeComponent();
             this.contatoRepositorio = contatoRepositorio;
             this.compromissoRepositorio = compromissoRepositorio;
-            totalContatos = contatoRepositorio.EntidadeList.Count;
+            totalContatos = contatoRepositorio.Count;
             AdicionarLinha(true);
         }
         private void buttonInserir_Click(object sender, System.EventArgs e)
@@ -63,8 +63,8 @@ namespace Apresentacao.WinApp.Contatos
                 MessageBox.Show("Seleção Inválida", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            Dominio.Contato? contato = contatoRepositorio.EntidadeList.Find(x => x.Numero == posicao);
-            if (compromissoRepositorio.EntidadeList.Find(x => x.Contato == contato) != null)
+            Dominio.Contato? contato = contatoRepositorio.Find(x => x.Numero == posicao);
+            if (compromissoRepositorio.Find(x => x.Contato == contato) != null)
             {
                 MessageBox.Show("O Contato Está Atrelado a um Compromisso", "ERRO", MessageBoxButtons.OK, 
                     MessageBoxIcon.Error);
@@ -81,7 +81,7 @@ namespace Apresentacao.WinApp.Contatos
         private void editarLinha(int posicao)
         {
             ListViewItem coluna = listView1.SelectedItems[0];
-            Dominio.Contato contato = contatoRepositorio.EntidadeList[posicao];
+            Dominio.Contato contato = contatoRepositorio.Get(posicao);
             coluna.SubItems[1].Text = contato.Nome;
             coluna.SubItems[2].Text = contato.Email;
             coluna.SubItems[3].Text = contato.Telefone;
@@ -90,25 +90,25 @@ namespace Apresentacao.WinApp.Contatos
         }
         private void AdicionarLinha(bool adicionarListaCompleta)
         {
-            if (contatoRepositorio.EntidadeList.Count == 0)
+            if (contatoRepositorio.Count == 0)
                 return;
             int i = adicionarListaCompleta ? 0 : totalContatos;
 
-            while (i < contatoRepositorio.EntidadeList.Count)
+            while (i < contatoRepositorio.Count)
             {
                 ListViewItem coluna = new("" + i);
 
 
-                coluna.SubItems.Add(contatoRepositorio.EntidadeList[i].Nome);
-                coluna.SubItems.Add(contatoRepositorio.EntidadeList[i].Email);
-                coluna.SubItems.Add(contatoRepositorio.EntidadeList[i].Telefone);
-                coluna.SubItems.Add(contatoRepositorio.EntidadeList[i].Empresa);
-                coluna.SubItems.Add(contatoRepositorio.EntidadeList[i].Cargo);
+                coluna.SubItems.Add(contatoRepositorio.Get(i).Nome);
+                coluna.SubItems.Add(contatoRepositorio.Get(i).Email);
+                coluna.SubItems.Add(contatoRepositorio.Get(i).Telefone);
+                coluna.SubItems.Add(contatoRepositorio.Get(i).Empresa);
+                coluna.SubItems.Add(contatoRepositorio.Get(i).Cargo);
 
                 listView1.Items.Add(coluna);
                 i++;
             }
-            totalContatos = contatoRepositorio.EntidadeList.Count;
+            totalContatos = contatoRepositorio.Count;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -117,7 +117,7 @@ namespace Apresentacao.WinApp.Contatos
             {
                 listView1.Items.Clear();
 
-                foreach (Dominio.Contato c in contatoRepositorio.EntidadeList)
+                foreach (Dominio.Contato c in contatoRepositorio.GetAll)
                 {
                     ListViewItem coluna = new("" + c.Numero);
 
@@ -137,7 +137,7 @@ namespace Apresentacao.WinApp.Contatos
         private  void AgruparCargo()
         {
             listView1.Items.Clear();
-            List<Dominio.Contato> copia = new(contatoRepositorio.EntidadeList.OrderBy(x=> x.Cargo));
+            List<Dominio.Contato> copia = new(contatoRepositorio.GetAll.OrderBy(x=> x.Cargo));
 
             foreach (Dominio.Contato c in copia)
             {

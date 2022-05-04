@@ -39,9 +39,9 @@ namespace Apresentacao.WinApp.Tarefas
                 return;
             }
 
-            if (tarefaRepositorio.EntidadeList.Count > 0)
+            if (tarefaRepositorio.Count > 0)
             {
-                Tarefa? tarefaConflitante = tarefaRepositorio.EntidadeList.Find(x => x.Titulo == t.Titulo);
+                Tarefa? tarefaConflitante = tarefaRepositorio.Find(x => x.Titulo == t.Titulo);
                 if (tarefaConflitante != null)
                 {
                     MessageBox.Show("Título da Tarefa já existe em outra Tarefa!!!",

@@ -8,11 +8,15 @@ namespace Dominio.Compartilhado
 {
     public interface IRepositorio<T> where T : Entidade 
     {
+        public int Count{ get; }
+        public Action<T> ForEach { set; }
+        public List<T> GetAll { get; }
         void Inserir(T entidade);
         void Editar(T entidade, int posicao);
         void Excluir(T entidade);
-        //List<T> Filtrar(Predicate<T> pred);
-        //List<T> Visualizar();
-
+        void Excluir(Predicate<T> match);
+        List<T> FindAll(Predicate<T> pred);
+        T Find(Predicate<T> pred);
+        T Get(int id);
     }
 }

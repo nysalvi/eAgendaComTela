@@ -8,8 +8,11 @@ namespace Dominio.Compartilhado
 {
     public class Repositorio<T> : IRepositorio<T> where T : Entidade
     {
-        private List<T> entidadeList;
-        public List<T> EntidadeList => entidadeList;
+        private readonly List<T> entidadeList;
+        public int Count => entidadeList.Count;
+        public Action<T> ForEach { set => entidadeList.ForEach(value); }
+        public List<T> GetAll => new (entidadeList);
+
         public Repositorio()
         {
             entidadeList = new List<T>();
@@ -17,7 +20,7 @@ namespace Dominio.Compartilhado
         public void Inserir(T entidade)
         {
             entidade.Numero = entidade.Total++;
-            entidadeList.Add(entidade);              
+            entidadeList.Add(entidade);       
         }
 
         public void Editar(T entidade, int posicao)
@@ -31,8 +34,23 @@ namespace Dominio.Compartilhado
             entidadeList.Remove(entidade);
         }
         public void Excluir(Predicate<T> match)
-        {
+        {            
             entidadeList.RemoveAll(match);
+        }
+
+        public List<T> FindAll(Predicate<T> pred)
+        {
+            return entidadeList.FindAll(pred);
+        }
+
+        public T Find(Predicate<T> pred)
+        {
+            return entidadeList.Find(pred);
+        }
+
+        public T Get(int id)
+        {
+            return entidadeList[id];
         }
     }
 }

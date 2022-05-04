@@ -10,7 +10,7 @@ namespace Dominio
         public enum PRIORIDADE {Alta, Media, Baixa}
         public override int Total { get { return total; } set { total = value; } }
 
-        public List<Item> itens;
+        public Repositorio<Item> itens;
         public int NumeroItem { get; set; }
         public string Titulo { get; set; }
         private int _Prioridade { get; set; }
@@ -26,7 +26,7 @@ namespace Dominio
 
         public Tarefa(string titulo, DateTime criacao, PRIORIDADE prioridade)
         {
-            itens = new List<Item>();
+            itens = new Repositorio<Item>();
             Titulo = titulo;
             _Prioridade = prioridade == PRIORIDADE.Alta ? 0 : prioridade == PRIORIDADE.Media ? 1 : 2;
             Prioridade = prioridade;
@@ -36,21 +36,22 @@ namespace Dominio
         }
         public void ConcluirItem(int item)
         {
-            if (itens[item - 1].Concluido)
+            if (itens.Get(item - 1).Concluido)
                 return;
             
-            itens[item - 1].Concluido = true;
+            itens.Get(item - 1).Concluido = true;
             AtualizaPorcentagem();
             return;
         }
         public void AtualizaPorcentagem()
         {
             Percentual = 0;
-            itens.ForEach(i =>
+            itens.ForEach = i =>
             {
                 if (i.Concluido)
                     Percentual += (100 / itens.Count);
-            });
+            };
+
             if (Percentual >= 100)
                 Conclusao = DateTime.Now; 
         }
@@ -66,8 +67,7 @@ namespace Dominio
         }
         public void AdicionarItem(Item item)
         {
-            item.Numero = ++NumeroItem;
-            itens.Add(item);
+            itens.Inserir(item);
             AtualizaPorcentagem();
         }
         public override string ToString()

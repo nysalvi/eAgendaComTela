@@ -7,11 +7,13 @@ namespace Apresentacao.WinApp.Tarefas
     public partial class EditarItem : Form
     {
         Tarefa tarefa;
+        int posicaoItem;
         public EditarItem(Tarefa tarefa)
         {
             InitializeComponent();
-            comboBoxItem.Items.AddRange(tarefa.itens.ToArray());
+            comboBoxItem.Items.AddRange(tarefa.itens.GetAll.ToArray());
             this.tarefa = tarefa;
+            comboBoxConcluido.SelectedIndex = 1;
         }
 
         private void buttonVoltar_Click(object sender, EventArgs e)
@@ -19,11 +21,19 @@ namespace Apresentacao.WinApp.Tarefas
             Close();
         }
 
-        private void buttonCriar_Click(object sender, EventArgs e)
+        private void buttonEditar_Click(object sender, EventArgs e)
         {
+            Item itemAntigo = tarefa.itens.Get(comboBoxItem.SelectedIndex);
+
             string descricao = textBoxDescricao.Text;
             bool concluido = comboBoxConcluido.Text == "Sim" ? true : false;
 
+            if (descricao == itemAntigo.Descricao && concluido == itemAntigo.Concluido)
+            {
+                MessageBox.Show("Pelo Menos Um dos Itens Precisam Ser Alterados", "ERRO", MessageBoxButtons.OK,
+                MessageBoxIcon.Error);
+                return;
+            }
             Item item = new Item(descricao, concluido);
 
             string resultado = item.Validar();
@@ -35,7 +45,8 @@ namespace Apresentacao.WinApp.Tarefas
                 return;
             }
 
-            Item? itemConflitante = tarefa.itens.Find(x => x.Descricao == descricao);
+
+            Item? itemConflitante = tarefa.itens.Find(x => x != itemAntigo && x.Descricao == descricao);
 
             if (itemConflitante != null)
             {
@@ -45,18 +56,20 @@ namespace Apresentacao.WinApp.Tarefas
             }            
 
             textBoxDescricao.Text = "";
-            comboBoxConcluido.SelectedIndex = 0;
+            comboBoxConcluido.SelectedIndex = 1;
 
+            tarefa.itens.Editar(item, posicaoItem);
             MessageBox.Show("Item Editado Com Sucesso!", resultado, MessageBoxButtons.OK,
             MessageBoxIcon.Asterisk);
 
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxItem_SelectedIndexChanged(object sender, EventArgs e)
         {
+            posicaoItem = comboBoxItem.SelectedIndex;
             Item selecionado = (Item)comboBoxItem.SelectedItem;
             textBoxDescricao.Text = selecionado.Descricao;
-            comboBoxConcluido.SelectedIndex = selecionado.Concluido ? 1 : 0;
+            comboBoxConcluido.SelectedIndex = selecionado.Concluido ? 0 : 1;
         }
     }
 }

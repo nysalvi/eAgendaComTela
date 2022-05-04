@@ -25,7 +25,7 @@ namespace Apresentacao.WinApp.Contatos
 
             if (resultado == "sucesso")
             {
-                if (contatoRepositorio.EntidadeList.Find(x => x.Nome == contato.Nome || x.Email == contato.Email
+                if (contatoRepositorio.Find(x => x.Nome == contato.Nome || x.Email == contato.Email
                     || x.Telefone == contato.Telefone) != null)
                 {
                     MessageBox.Show("Nome/Telefone/Email já inserido!!!", "ERRO", MessageBoxButtons.OK,
