@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dominio.Compartilhado
 {
+    [Serializable]
     public class Repositorio<T> : IRepositorio<T> where T : Entidade
     {
         private readonly List<T> entidadeList;
         public int Count => entidadeList.Count;
-        public Action<T> ForEach { set => entidadeList.ForEach(value); }
         public List<T> GetAll => new (entidadeList);
 
         public Repositorio()
@@ -47,10 +47,15 @@ namespace Dominio.Compartilhado
         {
             return entidadeList.Find(pred);
         }
-
         public T Get(int id)
         {
+
             return entidadeList[id];
+        }
+
+        public void ForEach(Action<T> action)
+        {
+            entidadeList.ForEach(action);
         }
     }
 }

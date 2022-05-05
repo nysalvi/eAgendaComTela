@@ -6,6 +6,10 @@ namespace Dominio
 {
     public class Tarefa : Entidade
     {
+        public Tarefa()
+        {
+
+        }
         public static int total;
         public enum PRIORIDADE {Alta, Media, Baixa}
         public override int Total { get { return total; } set { total = value; } }
@@ -46,11 +50,10 @@ namespace Dominio
         public void AtualizaPorcentagem()
         {
             Percentual = 0;
-            itens.ForEach = i =>
-            {
+            itens.ForEach( i => {
                 if (i.Concluido)
                     Percentual += (100 / itens.Count);
-            };
+            });
 
             if (Percentual >= 100)
                 Conclusao = DateTime.Now; 

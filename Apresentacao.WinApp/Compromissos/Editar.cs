@@ -17,7 +17,7 @@ namespace Apresentacao.WinApp.Compromissos
             this.compromissoRepositorio = compromissoRepositorio;
             this.contatoRepositorio = contatoRepositorio;
             this.posicaoCompromisso = posicaoCompromisso;
-            contatoRepositorio.ForEach = (x => comboBox1.Items.Add(x));
+            contatoRepositorio.ForEach(x => comboBox1.Items.Add(x));
             
         }
 

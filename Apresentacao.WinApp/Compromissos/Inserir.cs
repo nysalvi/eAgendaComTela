@@ -14,10 +14,9 @@ namespace Apresentacao.WinApp.Compromissos
             this.compromissoRepositorio = compromissoRepositorio;
             comboBox1.SelectedIndex = 0;
             //comboBox1.Items.Add();            
-            contatoRepositorio.ForEach = x =>
-            {
+            contatoRepositorio.ForEach(x => {
                 comboBox1.Items.Add(x);
-            };
+            });
         }
 
         private void buttonVoltar_Click(object sender, EventArgs e)

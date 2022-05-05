@@ -33,11 +33,12 @@
             this.buttonCompromisso = new System.Windows.Forms.Button();
             this.buttonSair = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonSalvar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonTarefa
             // 
-            this.buttonTarefa.Location = new System.Drawing.Point(129, 30);
+            this.buttonTarefa.Location = new System.Drawing.Point(50, 83);
             this.buttonTarefa.Name = "buttonTarefa";
             this.buttonTarefa.Size = new System.Drawing.Size(96, 40);
             this.buttonTarefa.TabIndex = 0;
@@ -47,7 +48,7 @@
             // 
             // buttonContato
             // 
-            this.buttonContato.Location = new System.Drawing.Point(129, 102);
+            this.buttonContato.Location = new System.Drawing.Point(116, 37);
             this.buttonContato.Name = "buttonContato";
             this.buttonContato.Size = new System.Drawing.Size(96, 40);
             this.buttonContato.TabIndex = 1;
@@ -57,7 +58,7 @@
             // 
             // buttonCompromisso
             // 
-            this.buttonCompromisso.Location = new System.Drawing.Point(129, 174);
+            this.buttonCompromisso.Location = new System.Drawing.Point(194, 83);
             this.buttonCompromisso.Name = "buttonCompromisso";
             this.buttonCompromisso.Size = new System.Drawing.Size(96, 40);
             this.buttonCompromisso.TabIndex = 2;
@@ -67,7 +68,7 @@
             // 
             // buttonSair
             // 
-            this.buttonSair.Location = new System.Drawing.Point(129, 246);
+            this.buttonSair.Location = new System.Drawing.Point(116, 223);
             this.buttonSair.Name = "buttonSair";
             this.buttonSair.Size = new System.Drawing.Size(96, 40);
             this.buttonSair.TabIndex = 3;
@@ -78,23 +79,34 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 30);
+            this.label1.Location = new System.Drawing.Point(28, 18);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(50, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "MENUS:";
             // 
-            // Form1
+            // buttonSalvar
+            // 
+            this.buttonSalvar.Location = new System.Drawing.Point(116, 129);
+            this.buttonSalvar.Name = "buttonSalvar";
+            this.buttonSalvar.Size = new System.Drawing.Size(96, 40);
+            this.buttonSalvar.TabIndex = 5;
+            this.buttonSalvar.Text = "Salvar";
+            this.buttonSalvar.UseVisualStyleBackColor = true;
+            this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
+            // 
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(362, 308);
+            this.ClientSize = new System.Drawing.Size(343, 287);
+            this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonSair);
             this.Controls.Add(this.buttonCompromisso);
             this.Controls.Add(this.buttonContato);
             this.Controls.Add(this.buttonTarefa);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -108,5 +120,6 @@
         private System.Windows.Forms.Button buttonCompromisso;
         private System.Windows.Forms.Button buttonSair;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonSalvar;
     }
 }

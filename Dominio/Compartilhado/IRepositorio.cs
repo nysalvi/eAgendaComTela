@@ -9,7 +9,7 @@ namespace Dominio.Compartilhado
     public interface IRepositorio<T> where T : Entidade 
     {
         public int Count{ get; }
-        public Action<T> ForEach { set; }
+        public void ForEach(Action<T> action);
         public List<T> GetAll { get; }
         void Inserir(T entidade);
         void Editar(T entidade, int posicao);

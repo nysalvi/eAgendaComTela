@@ -13,6 +13,7 @@ namespace Dominio.Compartilhado
         public int Numero { get; set; }
         public IEnumerator<Entidade> GetEnumerator()
         {
+            
             throw new NotImplementedException();
         }
 
@@ -20,7 +21,7 @@ namespace Dominio.Compartilhado
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }
