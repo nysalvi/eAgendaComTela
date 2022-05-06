@@ -6,7 +6,7 @@ namespace Dominio
 {
     public class Tarefa : Entidade
     {
-        public Tarefa()
+        public Tarefa() 
         {
 
         }

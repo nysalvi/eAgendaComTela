@@ -17,6 +17,10 @@ namespace Dominio.Compartilhado
         {
             entidadeList = new List<T>();
         }
+        public Repositorio(List<T> entidadeList)
+        {
+            this.entidadeList = entidadeList != null ? entidadeList : new();
+        }
         public void Inserir(T entidade)
         {
             entidade.Numero = entidade.Total++;
@@ -49,8 +53,9 @@ namespace Dominio.Compartilhado
         }
         public T Get(int id)
         {
-
-            return entidadeList[id];
+            T novo = default(T);
+            novo = entidadeList[id];
+            return novo;
         }
 
         public void ForEach(Action<T> action)

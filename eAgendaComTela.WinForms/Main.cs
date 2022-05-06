@@ -10,6 +10,8 @@ using Apresentacao.WinApp.Contatos;
 using Apresentacao.WinApp.Compromissos;
 using Apresentacao.WinApp.Tarefas;
 
+using System.IO;
+
 namespace eAgendaComTela.WinApp
 {
     public partial class Main : Form
@@ -22,10 +24,7 @@ namespace eAgendaComTela.WinApp
         public Main()
         {
             InitializeComponent();
-            contatoRepositorio = new Repositorio<Contato>();
-            compromissoRepositorio = new Repositorio<Compromisso>();
-            tarefaRepositorio = new();
-            gerenciador = new GerenciadorArquivos(System.IO.Path.GetDirectoryName("\\save.xml"));
+            gerenciador = new GerenciadorArquivos(Directory.GetCurrentDirectory() + "\\save.json");
             CarregarGerenciador();           
         }
 
@@ -65,23 +64,15 @@ namespace eAgendaComTela.WinApp
 
         private void PopularGerenciador()
         {
-            gerenciador.AdicionarRepositorio(contatoRepositorio);
-            gerenciador.AdicionarRepositorio(compromissoRepositorio);
-            gerenciador.AdicionarRepositorio(tarefaRepositorio);
+            gerenciador.AdicionarList(contatoRepositorio.GetAll);
+            gerenciador.AdicionarList(compromissoRepositorio.GetAll);
+            gerenciador.AdicionarList(tarefaRepositorio.GetAll);
         }
         private void CarregarGerenciador()
         {
-            ArrayList array = gerenciador.CarregarRepositorio();
-
-            for (int i = 0; i < array.Count; i++)
-            {
-                if (array[i].GetType() == typeof(Repositorio<Tarefa>))
-                    tarefaRepositorio = (Repositorio<Tarefa>)array[i];
-                else if (array[i].GetType() == typeof(Repositorio<Contato>))
-                    contatoRepositorio = (Repositorio<Contato>)array[i];
-                else if (array.GetType() == typeof(Repositorio<Compromisso>))
-                    compromissoRepositorio = (Repositorio<Compromisso>)array[i];
-            }
+            contatoRepositorio = new Repositorio<Contato>(gerenciador.PegarList<Contato>());
+            compromissoRepositorio = new Repositorio<Compromisso>(gerenciador.PegarList<Compromisso>());
+            tarefaRepositorio = new(gerenciador.PegarList<Tarefa>());
         }
     }
 }

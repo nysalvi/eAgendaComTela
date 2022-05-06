@@ -71,7 +71,7 @@
             this.buttonSair.Location = new System.Drawing.Point(116, 223);
             this.buttonSair.Name = "buttonSair";
             this.buttonSair.Size = new System.Drawing.Size(96, 40);
-            this.buttonSair.TabIndex = 3;
+            this.buttonSair.TabIndex = 4;
             this.buttonSair.Text = "Sair";
             this.buttonSair.UseVisualStyleBackColor = true;
             this.buttonSair.Click += new System.EventHandler(this.buttonSair_Click);
@@ -90,7 +90,7 @@
             this.buttonSalvar.Location = new System.Drawing.Point(116, 129);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(96, 40);
-            this.buttonSalvar.TabIndex = 5;
+            this.buttonSalvar.TabIndex = 3;
             this.buttonSalvar.Text = "Salvar";
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
