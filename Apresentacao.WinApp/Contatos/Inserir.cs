@@ -42,8 +42,6 @@ namespace Apresentacao.WinApp.Contatos
                 textBoxEmpresa.Clear();
                 textBoxCargo.Clear();
             }
-            MessageBox.Show(resultado, "ERRO", MessageBoxButtons.OK,
-                MessageBoxIcon.Error);
         }
         private void buttonVoltar_Click(object sender, EventArgs e)
         {

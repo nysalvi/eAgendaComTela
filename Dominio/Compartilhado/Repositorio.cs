@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Dominio.Compartilhado
 {
@@ -53,9 +51,12 @@ namespace Dominio.Compartilhado
         }
         public T Get(int id)
         {
-            T novo = default(T);
-            novo = entidadeList[id];
-            return novo;
+            JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings();
+            jsonSerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.All;
+
+            string copia = JsonConvert.SerializeObject(entidadeList[id], jsonSerializerSettings);
+            
+            return JsonConvert.DeserializeObject<T>(copia);
         }
 
         public void ForEach(Action<T> action)

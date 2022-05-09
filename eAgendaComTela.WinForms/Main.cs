@@ -9,8 +9,10 @@ using Infra;
 using Apresentacao.WinApp.Contatos;
 using Apresentacao.WinApp.Compromissos;
 using Apresentacao.WinApp.Tarefas;
+using Apresentacao.WinApp.Despesas;
 
 using System.IO;
+using System.Collections.Generic;
 
 namespace eAgendaComTela.WinApp
 {
@@ -21,6 +23,7 @@ namespace eAgendaComTela.WinApp
         Repositorio<Contato> contatoRepositorio;
         Repositorio<Compromisso> compromissoRepositorio;
         Repositorio<Tarefa> tarefaRepositorio;
+        Repositorio<Despesa> despesaRepositorio;
         public Main()
         {
             InitializeComponent();
@@ -60,6 +63,8 @@ namespace eAgendaComTela.WinApp
         {
             PopularGerenciador();
             gerenciador.SalvarRepositorio();
+            MessageBox.Show("Salvado Com Sucesso", "SUCESSO", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            return;
         }
 
         private void PopularGerenciador()
@@ -67,12 +72,23 @@ namespace eAgendaComTela.WinApp
             gerenciador.AdicionarList(contatoRepositorio.GetAll);
             gerenciador.AdicionarList(compromissoRepositorio.GetAll);
             gerenciador.AdicionarList(tarefaRepositorio.GetAll);
+            gerenciador.AdicionarList(despesaRepositorio.GetAll);
         }
         private void CarregarGerenciador()
         {
             contatoRepositorio = new Repositorio<Contato>(gerenciador.PegarList<Contato>());
             compromissoRepositorio = new Repositorio<Compromisso>(gerenciador.PegarList<Compromisso>());
             tarefaRepositorio = new(gerenciador.PegarList<Tarefa>());
+            despesaRepositorio = new(gerenciador.PegarList<Despesa>());
+        }
+
+        private void buttonDespesas_Click(object sender, EventArgs e)
+        {
+            TelaDespesa despesa = new TelaDespesa(despesaRepositorio);
+            Hide();
+            if (despesa.ShowDialog() == DialogResult.Cancel)
+                Show();
+
         }
     }
 }

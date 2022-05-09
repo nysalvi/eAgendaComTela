@@ -2,29 +2,42 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
-using System;
+using System.Linq;
 using System.Collections;
+using Dominio;
+using Dominio.Compartilhado;
 //using System.Text.Json;
 //using System.Text.Json.Serialization;
 using System.Collections.Generic;
 using System.IO;
+using System;
+
 namespace Infra
 {
     public class GerenciadorArquivos
     {
-        private ArrayList repositorios;
+        private List<List<Entidade>> listas;
+
+        private List<Tarefa> tarefas;
+        private List<Compromisso> compromissos;
+        private List<Contato> contatos;
+
+        private ArrayList lista;
         private readonly string path;
         private readonly JsonSerializerSettings jsonSerializerSettings;
 
         public GerenciadorArquivos(string path)
         {
             this.path = path;
-            repositorios = new ArrayList();
+            listas = new();
+            tarefas = new();
+            contatos = new();
+            compromissos = new();
+            lista = new();
             jsonSerializerSettings = new JsonSerializerSettings();
-
             jsonSerializerSettings.Formatting = Formatting.Indented;
             jsonSerializerSettings.PreserveReferencesHandling = PreserveReferencesHandling.All;
-            CarregarList();
+            //CarregarList();
         }
         /*
         public void AdicionarList<T>(List<T> lista) where T : Entidade
@@ -38,21 +51,33 @@ namespace Infra
         }*/
         public void AdicionarList<T>(List<T> lista) where T : Entidade
         {
-            repositorios.Add(lista);
+            List<Entidade> itemAntigo = null;
+
+            foreach (List<Entidade> list in listas)
+            {
+                //List<T> listao = list.ToObject<List<T>>();
+                if (list is List<T>)                    
+                    itemAntigo = list;
+            }
+            if (itemAntigo is not null && itemAntigo.Count > 0)
+                listas.Remove(itemAntigo);
+            if (lista is not null && lista.Count > 0)
+                listas.Add(lista.ToList<Entidade>());
         }
         public void SalvarRepositorio()
         {
-            string dados = JsonConvert.SerializeObject(repositorios, jsonSerializerSettings);
+            string dados = JsonConvert.SerializeObject(listas, jsonSerializerSettings);
             File.WriteAllText(path, dados);
         }
         public List<T> PegarList<T>() where T : Entidade
-        {
-            Console.WriteLine(repositorios[0].GetType().ToString());
-            foreach (JArray list in repositorios)
+        {            
+            if (listas is not null)
             {
-                List<T> lista = list.ToObject<List<T>>();
-                if (lista.GetType() == typeof(T))
-                    return (List<T>)lista;
+                foreach (var list in listas)
+                {
+                    if (list is not null && list.GetType() is List<T>)
+                        return list as List<T>;
+                }
             }
             return null;
         }
@@ -61,7 +86,9 @@ namespace Infra
             if (!File.Exists(path))
                 return;
             string dados = File.ReadAllText(path);
-            repositorios = JsonConvert.DeserializeObject<ArrayList>(dados, jsonSerializerSettings);
+            var listasa = JsonConvert.DeserializeObject(dados, jsonSerializerSettings); //as List<List<Entidade>>;
+            listas = (List<List<Entidade>>)Convert.ChangeType(listasa, typeof(List<List<Entidade>>));
+            //lista.AddRange(listar);
         }
     }
 }

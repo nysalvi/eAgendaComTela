@@ -34,6 +34,7 @@
             this.buttonSair = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonSalvar = new System.Windows.Forms.Button();
+            this.buttonDespesas = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonTarefa
@@ -68,7 +69,7 @@
             // 
             // buttonSair
             // 
-            this.buttonSair.Location = new System.Drawing.Point(116, 223);
+            this.buttonSair.Location = new System.Drawing.Point(116, 249);
             this.buttonSair.Name = "buttonSair";
             this.buttonSair.Size = new System.Drawing.Size(96, 40);
             this.buttonSair.TabIndex = 4;
@@ -87,7 +88,7 @@
             // 
             // buttonSalvar
             // 
-            this.buttonSalvar.Location = new System.Drawing.Point(116, 129);
+            this.buttonSalvar.Location = new System.Drawing.Point(116, 203);
             this.buttonSalvar.Name = "buttonSalvar";
             this.buttonSalvar.Size = new System.Drawing.Size(96, 40);
             this.buttonSalvar.TabIndex = 3;
@@ -95,11 +96,22 @@
             this.buttonSalvar.UseVisualStyleBackColor = true;
             this.buttonSalvar.Click += new System.EventHandler(this.buttonSalvar_Click);
             // 
+            // buttonDespesas
+            // 
+            this.buttonDespesas.Location = new System.Drawing.Point(116, 129);
+            this.buttonDespesas.Name = "buttonDespesas";
+            this.buttonDespesas.Size = new System.Drawing.Size(96, 40);
+            this.buttonDespesas.TabIndex = 5;
+            this.buttonDespesas.Text = "Despesas";
+            this.buttonDespesas.UseVisualStyleBackColor = true;
+            this.buttonDespesas.Click += new System.EventHandler(this.buttonDespesas_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(343, 287);
+            this.ClientSize = new System.Drawing.Size(343, 301);
+            this.Controls.Add(this.buttonDespesas);
             this.Controls.Add(this.buttonSalvar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonSair);
@@ -121,5 +133,6 @@
         private System.Windows.Forms.Button buttonSair;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonSalvar;
+        private System.Windows.Forms.Button buttonDespesas;
     }
 }
